@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//private/tmp/**)",
+      "Bash(python3 -c \":*)",
+      "Bash(pip3 install:*)",
+      "Bash(open -a \"Google Chrome\" \"/Users/yas/Downloads/screencapture-order-eu-ovhcloud-fr-order-webcloud-2026-03-31-17_53_29.pdf\")"
+    ]
+  }
+}
