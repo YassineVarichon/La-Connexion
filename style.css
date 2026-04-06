@@ -1,21 +1,26 @@
 :root {
-    --bg: #ffffff;
-    --surface: #ffffff;
-    /* White Surface */
-    --surface-light: #f5f5f7;
-    /* Light Gray Surface */
+    --bg: #FCF5E8;
+    --surface: #FCF5E8;
+    /* Rich Warm Cream */
+    --surface-light: #F2EAD9;
+    /* Darker Cream Accent */
     --text: #1d1d1f;
-    /* Dark Text */
-    --text-muted: #86868b;
+    --text-muted: #6e6e73;
     --primary: #A81C26;
-    /* Deep Brand Red (Unchanged) */
     --secondary: #4E342E;
-    /* Brand Brown (Unchanged) */
     --accent: #FFC107;
-    /* Gold (Unchanged) */
 
     --font-heading: 'Bagel Fat One', cursive;
     --font-main: 'Outfit', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--text);
 }
 
 * {
@@ -32,9 +37,9 @@ body {
 }
 
 body {
-    /* Sophisticated Light Gradient */
-    background: linear-gradient(135deg, #ffffff 0%, #f4f6f8 100%);
-    background-color: #ffffff;
+    /* Sophisticated Cream Gradient */
+    background: linear-gradient(135deg, #F8F3E6 0%, #EBE3D0 100%);
+    background-color: var(--bg);
     min-height: 100vh;
     color: var(--text);
     font-family: var(--font-main);
@@ -69,27 +74,24 @@ a {
     padding: 0 24px;
 }
 
-/* Navbar */
+/* Navbar - iOS Liquid Style */
 .navbar {
     position: fixed;
-    top: 20px;
+    top: 25px;
     left: 50%;
     transform: translateX(-50%);
     width: fit-content;
-    /* Reduced min-width to prevent overlap with CTA */
     min-width: 850px;
     max-width: 1200px;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.9);
-    /* White glass */
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(248, 243, 230, 0.45);
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 100px;
-    /* Floating pill shape */
-    padding: 15px 50px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    padding: 10px 40px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Hide internal CTA on Desktop */
@@ -100,32 +102,34 @@ a {
 /* External Floating CTA */
 .floating-cta {
     position: fixed;
-    top: 35px;
+    top: 32px;
     right: 40px;
     z-index: 1002;
-    /* Ruby Glass Style (Non-Aggressive) */
-    background: linear-gradient(135deg, rgba(168, 28, 38, 0.8), rgba(139, 0, 0, 0.9));
+    background: linear-gradient(135deg, rgba(168, 28, 38, 0.85), rgba(139, 0, 0, 0.95));
     color: var(--text) !important;
     padding: 12px 25px;
     border-radius: 100px;
     font-weight: 700;
     text-decoration: none;
-    /* Soft diffuse glow instead of hard shadow */
-    box-shadow: 0 10px 30px rgba(168, 28, 38, 0.25), inset 0 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(168, 28, 38, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.2);
     border: 1px solid rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
 }
 
 .floating-cta:hover {
-    transform: translateY(-2px) scale(1.05);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(168, 28, 38, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.3);
 }
 
-/* Keep floating pill shape on scroll, just darken bg */
+/* Apple style shrink on scroll */
 .navbar.scrolled {
-    background: rgba(255, 255, 255, 0.95);
-    border-color: rgba(0, 0, 0, 0.1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background: rgba(248, 243, 230, 0.75);
+    border-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    top: 15px;
+    padding: 8px 30px;
 }
 
 .nav-content {
@@ -193,8 +197,8 @@ a {
     align-items: center;
     position: relative;
     overflow: hidden;
-    /* Background Image setup - Removed as requested */
-    background: #1a1a1a;
+    /* Transparent overlay over the new photo */
+    background: linear-gradient(to bottom, rgba(26, 26, 26, 0.4) 0%, rgba(26, 26, 26, 0.95) 100%), url('assets/bg_connexion.jpg') center/cover no-repeat;
     position: relative;
     z-index: 1;
 }
@@ -216,15 +220,15 @@ a {
 .badge {
     display: inline-block;
     padding: 6px 16px;
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
+    background: rgba(168, 28, 38, 0.1);
+    color: var(--primary);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 100px;
     font-size: 0.8rem;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(168, 28, 38, 0.2);
 }
 
 .hero h1 {
@@ -1412,10 +1416,11 @@ footer {
 
 .social-grid-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     max-width: 1000px;
     margin: 0 auto;
+    width: 100%;
 }
 
 .social-big-card {
@@ -2163,4 +2168,181 @@ footer {
     .modal-article-body h2 {
         font-size: 1.8rem;
     }
-}.burger { display: none; }
+}
+
+.burger {
+    display: none;
+}
+
+/* --- CHATBOT STYLES --- */
+#lc-chatbot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    font-family: var(--font-main);
+}
+
+#lc-chatbot-trigger {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(168, 28, 38, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+#lc-chatbot-trigger:hover {
+    transform: scale(1.1);
+}
+
+#lc-chatbot-window {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 320px;
+    height: 480px;
+    background: #f9f9fb;
+    border-radius: 24px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px) scale(0.95);
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+#lc-chatbot-window.open {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0) scale(1);
+}
+
+.lc-chatbot-header {
+    background: var(--primary);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lc-chatbot-header h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0;
+}
+
+#lc-chatbot-close {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 16px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+#lc-chatbot-close:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.lc-chatbot-body {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.lc-msg {
+    max-width: 85%;
+    padding: 12px 16px;
+    border-radius: 18px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    word-wrap: break-word;
+    animation: fadeInMsg 0.4s ease forwards;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+@keyframes fadeInMsg {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.lc-msg-bot {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+    color: var(--text);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+.lc-msg-user {
+    background: var(--text);
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+}
+
+.lc-chat-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.lc-option-btn {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--text);
+    padding: 10px 15px;
+    border-radius: 14px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.lc-option-btn:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    #lc-chatbot-window {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 100vw;
+        height: 80vh;
+        border-radius: 24px 24px 0 0;
+    }
+}

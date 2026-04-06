@@ -326,3 +326,128 @@ document.addEventListener('click', (e) => {
         window.closeArticle();
     }
 });
+
+// --- CHATBOT LOGIC ---
+document.addEventListener('DOMContentLoaded', () => {
+    // Inject HTML structure only if it doesn't exist
+    if (document.getElementById('lc-chatbot')) return;
+
+    const chatbotHTML = `
+        <div id="lc-chatbot">
+            <button id="lc-chatbot-trigger">
+                <span>💬</span>
+            </button>
+            <div id="lc-chatbot-window">
+                <div class="lc-chatbot-header">
+                    <h4>Assistant La Connexion</h4>
+                    <button id="lc-chatbot-close">✕</button>
+                </div>
+                <div class="lc-chatbot-body" id="lc-chatbot-messages">
+                    <div class="lc-msg lc-msg-bot">Bonjour ! Je suis l'assistant en ligne de La Connexion 🥋. Comment puis-je vous aider ?</div>
+                    <div class="lc-chat-options">
+                        <button class="lc-option-btn" data-action="planning">📅 Voir le Planning</button>
+                        <button class="lc-option-btn" data-action="inscription">📝 Comment s'inscrire ?</button>
+                        <button class="lc-option-btn" data-action="localisation">📍 Où êtes-vous situés ?</button>
+                        <button class="lc-option-btn" data-action="soutenir">❤️ Soutenir l'association</button>
+                        <button class="lc-option-btn" data-action="contact">📞 Comment vous contacter</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    document.body.insertAdjacentHTML('beforeend', chatbotHTML);
+
+    const trigger = document.getElementById('lc-chatbot-trigger');
+    const chatWindow = document.getElementById('lc-chatbot-window');
+    const closeBtn = document.getElementById('lc-chatbot-close');
+    const messages = document.getElementById('lc-chatbot-messages');
+
+    trigger.addEventListener('click', () => {
+        chatWindow.classList.add('open');
+        trigger.style.transform = 'scale(0)';
+        setTimeout(() => { trigger.style.display = 'none'; }, 200);
+
+        setTimeout(() => {
+            messages.scrollTop = messages.scrollHeight;
+        }, 100);
+    });
+
+    closeBtn.addEventListener('click', () => {
+        chatWindow.classList.remove('open');
+        trigger.style.display = 'flex';
+        setTimeout(() => { trigger.style.transform = 'scale(1)'; }, 10);
+    });
+
+    const responses = {
+        'planning': `<b>Horaires :</b><br><br>
+        • Lundi : 18h00 - 19h30 & 20h00 - 22h00<br>
+        • Mercredi : 20h00 - 22h00<br>
+        • Vendredi : 18h00 - 22h00<br>
+        • Samedi : 10h00 - 12h00 (Sparring)<br><br>
+        <i>Les horaires peuvent varier selon l'âge.</i>`,
+
+        'inscription': `<b>S'inscrire :</b><br>Commencez par remplir le formulaire en ligne sur notre onglet <a href="inscription.html" style="color:var(--primary); font-weight:bold; text-decoration:underline;">Pré-inscription</a>.<br><br>
+        Ensuite, rejoignez-nous sur place avec :<br>
+        1. Certificat médical<br>
+        2. Deux photos d'identité<br>
+        3. Le règlement de la cotisation<br><br>
+        On vous prête un kimono pour essayer ! 🥋`,
+
+        'localisation': `<b>Localisation :</b><br>
+        Tous les cours se déroulent au <b>Gymnase Evariste Galois</b>,<br>
+        5 Rue des Ecoles, 92000 Nanterre.<br>
+        🚇 À côté du RER A (Nanterre Préfecture).`,
+
+        'soutenir': `<b>Soutenir l'asso :</b><br>
+        Votre soutien nous permet de changer des vies. Vous pouvez faire un don sur HelloAsso (le don est déductible de vos impôts à 66%) !<br><br>
+        👉 <a href="https://www.helloasso.com/associations/la-connexion-nanterre/formulaires/2" target="_blank" style="color:var(--primary); font-weight:bold; text-decoration:underline;">Faire un don ici</a>`,
+
+        'contact': `<b>Contact :</b><br>
+        📧 Par email : <a href="mailto:laconnexionasso@gmail.com" style="color:var(--text); font-weight:bold;">laconnexionasso@gmail.com</a><br><br>
+        📱 Sur Insta : <a href="https://www.instagram.com/laconnexionasso/" target="_blank" style="color:var(--primary); font-weight:bold;">@laconnexionasso</a>`
+    };
+
+    function attachEvents() {
+        const unboundBtns = messages.querySelectorAll('.lc-option-btn:not(.bound)');
+        unboundBtns.forEach(btn => {
+            btn.classList.add('bound');
+            btn.addEventListener('click', (e) => {
+                const action = e.target.getAttribute('data-action');
+                const userText = e.target.innerText;
+
+                // Hide current options
+                const optionsDiv = e.target.parentElement;
+                optionsDiv.style.opacity = '0';
+                optionsDiv.style.pointerEvents = 'none';
+                setTimeout(() => { optionsDiv.style.display = 'none'; }, 200);
+
+                // User message
+                messages.insertAdjacentHTML('beforeend', `<div class="lc-msg lc-msg-user">${userText}</div>`);
+                messages.scrollTop = messages.scrollHeight;
+
+                // Bot typing effect & answer
+                setTimeout(() => {
+                    messages.insertAdjacentHTML('beforeend', `<div class="lc-msg lc-msg-bot">${responses[action]}</div>`);
+                    messages.scrollTop = messages.scrollHeight;
+
+                    // Show options again after short delay
+                    setTimeout(() => {
+                        messages.insertAdjacentHTML('beforeend', `
+                        <div class="lc-chat-options">
+                            <button class="lc-option-btn" data-action="planning">📅 Voir le Planning</button>
+                            <button class="lc-option-btn" data-action="inscription">📝 Comment s'inscrire ?</button>
+                            <button class="lc-option-btn" data-action="localisation">📍 Où êtes-vous situés ?</button>
+                            <button class="lc-option-btn" data-action="soutenir">❤️ Soutenir l'association</button>
+                            <button class="lc-option-btn" data-action="contact">📞 Comment vous contacter</button>
+                        </div>`);
+                        messages.scrollTop = messages.scrollHeight;
+                        attachEvents(); // Recursive bind
+                    }, 1200);
+                }, 600);
+            });
+        });
+    }
+
+    attachEvents();
+});
