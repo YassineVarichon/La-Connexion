@@ -126,11 +126,12 @@
                 </a>
             </div>
             <ul class="nav-links">
-                <li><a href="index#mission">Mission</a></li>
-                <li><a href="planning">Planning</a></li>
-                <li><a href="impact">Impact</a></li>
-                <li><a href="reseaux">Nos Réseaux</a></li>
-                <li><a href="inscription" class="active">Inscription</a></li>
+                <li><a href="index.html#mission">Mission</a></li>
+                <li><a href="planning.html">Planning</a></li>
+                <li><a href="impact.html">Impact</a></li>
+                <li><a href="evenements.html">Événements</a></li>
+                <li><a href="reseaux.html">Nos Réseaux</a></li>
+                <li><a href="inscription.html" class="active">Inscription</a></li>
 
                 <li><a href="https://www.helloasso.com/associations/la-connexion-nanterre/formulaires/2"
                         class="cta-btn">Nous Soutenir 🔥</a></li>
@@ -190,28 +191,22 @@
                         btn.innerHTML = "Envoi en cours... ⏳";
                         msg.style.display = "none";
 
-                        // Using no-cors mode is essential for Google Apps Script Web Apps to avoid CORS errors
+                        // Using no-cors mode is essential for Google Apps Script Web Apps
                         fetch(scriptURL, {
                             method: 'POST',
                             body: new FormData(form),
                             mode: 'no-cors'
-                        })
-                            .then(response => {
-                                msg.style.display = "block";
-                                msg.style.color = "#4CAF50"; // Green
-                                msg.innerHTML = "✅ Merci ! Votre pré-inscription a bien été reçue.";
-                                form.reset();
-                                btn.innerHTML = "Soumettre l'inscription";
-                                btn.disabled = false;
-                            })
-                            .catch(error => {
-                                msg.style.display = "block";
-                                msg.style.color = "#F44336"; // Red
-                                msg.innerHTML = "❌ Une erreur est survenue. Veuillez réessayer.";
-                                btn.innerHTML = "Soumettre l'inscription";
-                                btn.disabled = false;
-                                console.error('Error!', error.message);
-                            });
+                        }).catch(error => console.error('Erreur réseau:', error));
+
+                        // Faux délai d'attente pour une meilleure sensation utilisateur, puisque Google est lent
+                        setTimeout(() => {
+                            msg.style.display = "block";
+                            msg.style.color = "#4CAF50"; // Green
+                            msg.innerHTML = "✅ Merci ! Votre pré-inscription a bien été reçue.";
+                            form.reset();
+                            btn.innerHTML = "Soumettre l'inscription";
+                            btn.disabled = false;
+                        }, 1200);
                     })
                 </script>
             </div>

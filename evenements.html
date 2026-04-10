@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Événements | La Connexion 📅</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=block"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile_responsive.css">
+    <link rel="shortcut icon" href="assets/logo.jpg" type="image/x-icon">
+    <link rel="icon" href="assets/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .events-section {
+            padding-top: 160px;
+            padding-bottom: 100px;
+            background: var(--bg);
+            min-height: 100vh;
+        }
+
+        .events-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .events-header h1 {
+            font-size: 3rem;
+            font-family: 'Bagel Fat One', cursive;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+
+        .events-header p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .event-capsule {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-capsule:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(168, 28, 38, 0.1);
+            border-color: rgba(168, 28, 38, 0.2);
+        }
+
+        .event-date-badge {
+            background: var(--primary);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            align-self: flex-start;
+            margin: 20px 20px 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .event-content {
+            padding: 10px 25px 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .event-content h3 {
+            font-size: 1.6rem;
+            font-family: 'Bagel Fat One', cursive;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+
+        .event-content p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 1rem;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .event-btn {
+            background-color: var(--surface-light);
+            color: var(--text);
+            padding: 12px 20px;
+            border-radius: 100px;
+            text-align: center;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .event-capsule:hover .event-btn {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+                    <img src="assets/logo.jpg" alt="Logo">
+                    <span>LA CONNEXION</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="planning.html">Planning</a></li>
+                <li><a href="impact.html">Impact</a></li>
+                <li><a href="evenements.html" class="active">Événements</a></li>
+                <li><a href="reseaux.html">Nos Réseaux</a></li>
+                <li><a href="inscription.html">Inscription</a></li>
+
+                <li><a href="https://www.helloasso.com/associations/la-connexion-nanterre/formulaires/2"
+                        class="cta-btn">Nous Soutenir 🔥</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Desktop Floating CTA -->
+    <a href="https://www.helloasso.com/associations/la-connexion-nanterre/formulaires/2" class="floating-cta"
+        target="_blank">Nous Soutenir 🔥</a>
+
+    <!-- Events Section -->
+    <section class="events-section">
+        <div class="container">
+            <div class="events-header">
+                <div class="badge">À NE PAS MANQUER</div>
+                <h1>Nos Événements</h1>
+                <p>Stages, compétitions et rassemblements : restez connectés !</p>
+            </div>
+
+            <div class="events-grid">
+                <!-- Capsule 1 : Stage de JJB -->
+                <div class="event-capsule">
+                    <div class="event-date-badge">
+                        <i class="far fa-calendar-alt"></i> 17 au 20 Avril
+                    </div>
+                    <div class="event-content">
+                        <h3>Stage de JJB 🔥</h3>
+                        <p>Ne manquez pas ce stage intensif de Jiu-Jitsu Brésilien sur 4 jours. Technique, sparring et
+                            bonne humeur au programme. Ouvert à tous !</p>
+                        <a href="javascript:void(0)" onclick="showEventForm()" class="event-btn">S'inscrire
+                            maintenant</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Inscription Form for the Event -->
+            <div id="inscription-stage"
+                style="display: none; margin-top: 80px; max-width: 600px; margin-left: auto; margin-right: auto; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.05);">
+                <h2
+                    style="font-family: 'Bagel Fat One', cursive; font-size: 2rem; color: var(--text); margin-bottom: 20px; text-align: center;">
+                    Inscription au Stage</h2>
+                <p style="text-align: center; color: var(--text-muted); margin-bottom: 30px;">Remplissez ce formulaire
+                    pour valider votre place au stage de JJB d'avril.</p>
+                <form id="stage-form" style="display: flex; flex-direction: column; gap: 20px;">
+                    <!-- Champ caché pour identifier que ça vient de la page événement -->
+                    <input type="hidden" name="form_type" value="evenements">
+                    <input type="hidden" name="event_name" value="Stage JJB Avril">
+
+                    <div class="form-group" style="display: flex; flex-direction: column; gap: 8px;">
+                        <label for="nom-stage" style="font-weight: 600; color: var(--text);">Nom</label>
+                        <input type="text" id="nom-stage" name="nom" placeholder="Votre nom" required
+                            style="width: 100%; padding: 15px; border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 12px; font-family: 'Outfit', sans-serif; font-size: 1rem; background: rgba(0, 0, 0, 0.02); transition: all 0.3s ease;">
+                    </div>
+
+                    <div class="form-group" style="display: flex; flex-direction: column; gap: 8px;">
+                        <label for="prenom-stage" style="font-weight: 600; color: var(--text);">Prénom</label>
+                        <input type="text" id="prenom-stage" name="prenom" placeholder="Votre prénom" required
+                            style="width: 100%; padding: 15px; border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 12px; font-family: 'Outfit', sans-serif; font-size: 1rem; background: rgba(0, 0, 0, 0.02); transition: all 0.3s ease;">
+                    </div>
+
+                    <div class="form-group" style="display: flex; flex-direction: column; gap: 8px;">
+                        <label for="age-stage" style="font-weight: 600; color: var(--text);">Âge</label>
+                        <select id="age-stage" name="age" required
+                            style="width: 100%; padding: 15px; border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 12px; font-family: 'Outfit', sans-serif; font-size: 1rem; background: rgba(0, 0, 0, 0.02); transition: all 0.3s ease;">
+                            <option value="" disabled selected>Sélectionnez votre âge</option>
+                            <option value="5 ans">5 ans</option>
+                            <option value="6 ans">6 ans</option>
+                            <option value="7 ans">7 ans</option>
+                            <option value="8 ans">8 ans</option>
+                            <option value="9 ans">9 ans</option>
+                            <option value="10 ans">10 ans</option>
+                            <option value="11 ans">11 ans</option>
+                            <option value="12 ans">12 ans</option>
+                            <option value="13 ans">13 ans</option>
+                            <option value="14 ans">14 ans</option>
+                            <option value="15 ans">15 ans</option>
+                            <option value="16 ans">16 ans</option>
+                            <option value="17 ans">17 ans</option>
+                            <option value="18 ans">18 ans</option>
+                            <option value="19 ans">19 ans</option>
+                            <option value="20 ans">20 ans</option>
+                            <option value="Plus de 20 ans">Plus de 20 ans</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="stage-submit-btn"
+                        style="background-color: var(--primary); color: white; padding: 18px 30px; font-size: 1.1rem; font-weight: 700; border: none; border-radius: 100px; cursor: pointer; font-family: 'Outfit', sans-serif; transition: all 0.3s ease; width: 100%; margin-top: 10px;">Valider
+                        mon inscription</button>
+                    <div id="stage-form-msg"
+                        style="margin-top: 15px; font-weight: 600; text-align: center; display: none;"></div>
+                </form>
+
+                <script>
+                    const stageScriptURL = 'https://script.google.com/macros/s/AKfycbzGy_a7dBchzw_8xnh-IZYHMmRu-1KQh5x2RottjssnmzCyCEB0rCZ_Gt2xS2UZtofSmw/exec';
+                    const stageForm = document.getElementById('stage-form');
+                    const stageBtn = document.getElementById('stage-submit-btn');
+                    const stageMsg = document.getElementById('stage-form-msg');
+
+                    stageForm.addEventListener('submit', e => {
+                        e.preventDefault();
+                        stageBtn.disabled = true;
+                        stageBtn.innerHTML = "Enregistrement... ⏳";
+                        stageMsg.style.display = "none";
+
+                        // On lance la requête sans attendre la lenteur de la réponse Google
+                        fetch(stageScriptURL, {
+                            method: 'POST',
+                            body: new FormData(stageForm),
+                            mode: 'no-cors'
+                        }).catch(error => console.error('Erreur réseau cachée:', error));
+
+                        // Affichage du succès quasi instantané pour une meilleure UX
+                        setTimeout(() => {
+                            stageMsg.style.display = "block";
+                            stageMsg.style.color = "#4CAF50";
+                            stageMsg.innerHTML = "✅ Merci ! Votre place au stage est réservée.";
+                            stageForm.reset();
+                            stageBtn.innerHTML = "Valider mon inscription";
+                            stageBtn.disabled = false;
+
+                            // Cacher le formulaire après succès
+                            setTimeout(() => {
+                                document.getElementById('inscription-stage').style.display = 'none';
+                                stageMsg.style.display = "none";
+                            }, 3000);
+                        }, 1200); // Faux délai de 1.2s pour faire réaliste
+                    });
+
+                    function showEventForm() {
+                        const formContainer = document.getElementById('inscription-stage');
+                        formContainer.style.display = 'block';
+                        formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-flex">
+            <div class="brand">
+                <h3>LA CONNEXION</h3>
+                <p>Nanterre, France 🇫🇷</p>
+            </div>
+            <div class="creator">
+                <p style="color: black;">Site réalisé par Yassine Varichon 🧑‍🍳</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
