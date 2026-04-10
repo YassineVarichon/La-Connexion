@@ -10,7 +10,7 @@
     --secondary: #4E342E;
     --accent: #FFC107;
 
-    --font-heading: 'Bagel Fat One', cursive;
+    --font-heading: 'Space Grotesk', sans-serif;
     --font-main: 'Outfit', sans-serif;
 }
 
@@ -498,7 +498,7 @@ a {
 }
 
 .bento-card {
-    /* Default State: Narrow Glass Pane */
+    /* Liquid iOS Design */
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -506,12 +506,12 @@ a {
     align-items: center;
     text-align: center;
     padding: 30px;
-    border-radius: 24px;
-    background: #8B1B20;
-    /* Brand Red Exact */
-    box-shadow: 0 10px 30px rgba(139, 27, 32, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: flex 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.4s;
+    border-radius: 36px;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04), inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+    transition: flex 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.4s, transform 0.4s, box-shadow 0.4s;
     overflow: hidden;
     position: relative;
     cursor: default;
@@ -519,52 +519,47 @@ a {
 
 .bento-card:hover {
     flex: 2.5;
-    background: #9d1e24;
-    /* Slightly lighter red on hover */
-    /* Slightly lighter red on hover */
-    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.85);
+    transform: translateY(-5px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 1);
 }
 
 .card-icon {
-    font-size: 2.2rem;
-    /* Larger icon */
+    font-size: 2.5rem;
     margin-bottom: 20px;
     margin-top: 0;
-    background: rgba(0, 0, 0, 0.1);
+    /* Soft floating 3D circle */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     width: 80px;
     height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.02);
-    opacity: 0.7;
-    transition: all 0.4s;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .bento-card:hover .card-icon {
-    opacity: 1;
-    background: #fff;
-    color: var(--primary);
-    border-color: transparent;
-    transform: scale(1.1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    background: #ffffff;
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 1);
 }
 
 .bento-card h3 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     margin-bottom: 8px;
-    color: #fff;
+    color: var(--text);
     white-space: nowrap;
-    transition: transform 0.4s;
+    transition: transform 0.4s, font-size 0.4s;
 }
 
 .bento-card p {
-    color: rgba(255, 255, 255, 0.9);
-    /* White text for readability on red */
+    color: var(--text-muted);
     font-size: 0.95rem;
-    line-height: 1.4;
+    line-height: 1.5;
     opacity: 0;
     max-height: 0;
     overflow: hidden;
@@ -577,14 +572,14 @@ a {
 .bento-card:hover p {
     opacity: 1;
     max-height: 150px;
-    /* ample space for text */
     transform: translateY(0);
 }
 
 .bento-card:hover h3 {
     transform: translateY(-5px);
-    font-size: 1.6rem;
-    /* Grow title less aggressively */
+    font-size: 1.8rem;
+    color: var(--primary);
+    /* subtle red hint on hover to keep brand */
 }
 
 /* Mobile Fallback: Standard Stack */

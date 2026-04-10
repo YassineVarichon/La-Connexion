@@ -6,22 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- SEO & Social Media Preview (Open Graph) -->
-    <title>La Connexion | Jiu-Jitsu Brésilien à Nanterre 🥋</title>
+    <title>La Connexion | Jiu-Jitsu Brésilien & Grappling à Nanterre (92) 🥋</title>
     <meta name="description"
-        content="Plus qu'un club de sport, une école de la vie. Rejoignez la famille La Connexion au gymnase Évariste Galois à Nanterre. JJB pour tous niveaux.">
-    <meta property="og:title" content="La Connexion | JJB Nanterre 🥋">
+        content="La Connexion est votre club de Jiu-Jitsu Brésilien (JJB) et Grappling à Nanterre (Hauts-de-Seine, 92). Cours pour enfants, ados et adultes au Gymnase Évariste Galois.">
+    <meta property="og:title" content="La Connexion | JJB & Grappling Nanterre 🥋">
     <meta property="og:description"
-        content="Plus qu'un club de sport, une école de la vie. Rejoignez le mouvement et boostez votre potentiel au gymnase Évariste Galois. 🔥">
+        content="Rejoignez notre académie de Jiu-Jitsu Brésilien à Nanterre. Un club inclusif, des cours de qualité et une vraie cohésion sociale dans le 92 (Hauts-de-Seine).">
     <meta property="og:image" content="https://laconnexionasso.fr/assets/logo.jpg">
     <meta property="og:url" content="https://laconnexionasso.fr">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
 
+    <!-- Schema.org Local Business / Sports Club -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsClub",
+      "name": "La Connexion",
+      "image": "https://laconnexionasso.fr/assets/logo.jpg",
+      "description": "Club de Jiu-Jitsu Brésilien (JJB) et Grappling situé à Nanterre dans les Hauts-de-Seine pour tous les âges et tous les niveaux.",
+      "url": "https://laconnexionasso.fr",
+      "telephone": "",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Gymnase Evariste Galois, 5 Rue des Ecoles",
+        "addressLocality": "Nanterre",
+        "postalCode": "92000",
+        "addressRegion": "Île-de-France",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 48.892,
+        "longitude": 2.221
+      },
+      "sameAs": [
+        "https://www.instagram.com/laconnexionasso/",
+        "https://www.linkedin.com/company/asso-la-connexion"
+      ]
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Import Bagel Fat One + Outfit + Space Grotesk -->
+    <!-- Import Syne + Outfit + Space Grotesk -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=block"
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=block"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mobile_responsive.css">
@@ -108,30 +138,109 @@
         </div>
     </section>
 
-    <!-- Grid Cards (Emoji Style) -->
+    <style>
+        /* Editorial Modern Layout for Mission Section */
+        .mission-modern-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            max-width: 850px;
+            margin: 40px auto 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .mission-text-block {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            align-items: start;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 50px 0;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .mission-text-block:hover {
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.6) 50%, rgba(255, 255, 255, 0) 100%);
+            transform: translateX(10px);
+        }
+
+        .mission-number {
+            font-family: var(--font-accent);
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: 700;
+            opacity: 0.6;
+            padding-top: 8px;
+        }
+
+        .mission-content h3 {
+            font-size: 2.5rem;
+            font-family: var(--font-heading);
+            margin-bottom: 20px;
+            color: var(--text);
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+
+        .mission-content p {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            max-width: 600px;
+        }
+
+        @media (max-width: 768px) {
+            .mission-text-block {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 40px 0;
+                transform: none !important;
+            }
+
+            .mission-content h3 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+
+    <!-- Editorial Layout (Modern, No Emojis, Clean) -->
     <section id="mission" class="section">
         <div class="container">
-            <div class="section-header">
-                <h2>Pourquoi nous existons ?</h2>
-                <p>Des solutions concrètes aux défis de nos quartiers.</p>
+            <div class="section-header" style="text-align: left; max-width: 850px; margin: 0 auto 40px;">
+                <h2 style="font-size: 3.5rem; letter-spacing: -2px; margin-bottom: 20px;">L'Impact <br>Avant Tout.</h2>
+                <p style="font-size: 1.2rem; max-width: 500px;">Des solutions concrètes, mesurables et gratuites face
+                    aux défis réels de nos quartiers.</p>
             </div>
 
-            <div class="bento-grid">
-                <div class="bento-card large">
-                    <div class="card-icon">🤝</div>
-                    <h3>Cohésion Sociale</h3>
-                    <p>Dans un monde individualiste, nous recréons une famille. Le tatami ne ment pas : on y apprend le
-                        respect de l'autre.</p>
+            <div class="mission-modern-layout">
+                <div class="mission-text-block">
+                    <span class="mission-number">01 —</span>
+                    <div class="mission-content">
+                        <h3>Restaurer la <br>Cohésion Sociale</h3>
+                        <p>Dans un monde individualiste, nous recréons du lien. Le tatami impose le respect de l'autre,
+                            détruit les barrières invisibles de l'âge et de l'origine, et forme une communauté soudée
+                            face à l'adversité.</p>
+                    </div>
                 </div>
-                <div class="bento-card">
-                    <div class="card-icon">🧠</div>
-                    <h3>Mental d'Acier</h3>
-                    <p>La confiance en soi se construit dans l'effort et la réussite sportive.</p>
+
+                <div class="mission-text-block">
+                    <span class="mission-number">02 —</span>
+                    <div class="mission-content">
+                        <h3>Forger un <br>Mental d'Acier</h3>
+                        <p>La confiance en soi ne s'achète pas. Elle se forge dans l'effort constant, la répétition,
+                            l'acceptation de l'échec et la victoire sur soi-même. Nous formons des leaders pour demain.
+                        </p>
+                    </div>
                 </div>
-                <div class="bento-card">
-                    <div class="card-icon">⚖️</div>
-                    <h3>Égalité</h3>
-                    <p>Kimonos offerts, accès pour tous. L'argent ne doit pas être un frein.</p>
+
+                <div class="mission-text-block">
+                    <span class="mission-number">03 —</span>
+                    <div class="mission-content">
+                        <h3>Garantir une <br>Égalité Totale</h3>
+                        <p>Le talent est universel, les opportunités ne le sont pas. Nous offrons nos kimonos et avons
+                            détruit toutes les barrières financières. L'argent ne doit jamais être un frein au
+                            dépassement de soi.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -184,10 +293,31 @@
         <div class="container" style="text-align: center;">
             <div class="section-header">
                 <h2>Prêt à monter sur le tatami ?</h2>
-                <p>Découvrez tous nos créneaux à Nanterre et Boulogne.</p>
+                <p>Découvrez tous nos créneaux de Jiu-Jitsu Brésilien (JJB) à Nanterre et Boulogne.</p>
             </div>
-            <a href="planning" class="btn-primary" style="font-size: 1.2rem; padding: 20px 40px;">Voir le Planning
+            <a href="planning.html" class="btn-primary" style="font-size: 1.2rem; padding: 20px 40px;">Voir le Planning
                 Complet 📅</a>
+        </div>
+    </section>
+
+    <!-- Local SEO Matrix Text (Discrete & Elegant) -->
+    <section class="section" style="padding-top: 60px; padding-bottom: 20px;">
+        <div class="container">
+            <div class="bento-card"
+                style="box-shadow: none; border: 1px solid rgba(0,0,0,0.03); background: rgba(255,255,255,0.4); text-align: center; max-width: 800px; margin: 0 auto; padding: 30px;">
+                <h2
+                    style="font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; color: var(--text); margin-bottom: 10px;">
+                    Notre Ancrage Local en Île-de-France 📍</h2>
+                <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
+                    Fondée au cœur des <strong>Hauts-de-Seine (92)</strong>, notre académie de <strong>Jiu-Jitsu
+                        Brésilien (JJB)</strong> et de <strong>Grappling</strong> est idéalement située au Gymnase
+                    Évariste Galois à <strong>Nanterre</strong>, à quelques minutes de La Défense, Puteaux, Courbevoie,
+                    et Rueil-Malmaison (accès facile via RER A Nanterre-Université et Nanterre-Préfecture). Que vous
+                    cherchiez des cours de self-défense, du perfectionnement sportif, ou un club de sport solidaire, La
+                    Connexion propose des entraînements inclusifs et accessibles à tous, encadrés par des
+                    professionnels.
+                </p>
+            </div>
         </div>
     </section>
 
