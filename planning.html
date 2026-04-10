@@ -15,6 +15,42 @@
     <link rel="shortcut icon" href="assets/logo.jpg" type="image/x-icon">
     <link rel="icon" href="assets/logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        #planning-section-bg {
+            position: relative;
+            padding-top: 150px;
+            /* L'image sera fixée pour un effet parallaxe premium */
+            background: url('assets/fond-planning.jpg') center/cover no-repeat fixed;
+            min-height: 100vh;
+        }
+
+        /* L'overlay semi-transparent (couleur crème du site) pour ne pas gêner la lecture */
+        #planning-section-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(252, 245, 232, 0.48);
+            /* Opacité baissée à 48% pour bien faire ressortir la photo */
+            z-index: 1;
+        }
+
+        /* On s'assure que le contenu reste au-dessus du fond */
+        #planning-section-bg>.container {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Les cartes du planning auront un effet blur un peu plus prononcé pour contraster */
+        .planning-card-v2 {
+            background: rgba(255, 255, 255, 0.90) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+    </style>
 </head>
 
 <body>
@@ -51,7 +87,7 @@
         target="_blank">Nous Soutenir 🔥</a>
 
     <!-- Planning Section -->
-    <section class="section" style="padding-top: 150px;">
+    <section id="planning-section-bg" class="section">
         <div class="container">
             <div class="section-header">
                 <h2>Planning 2025-2026</h2>
