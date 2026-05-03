@@ -349,10 +349,11 @@
                 <!-- Embedded Newsletter -->
                 <div class="footer-newsletter">
                     <h4>Rejoignez le mouvement 🗞️</h4>
-                    <form onsubmit="event.preventDefault(); alert('Merci de votre inscription !');">
+                    <form id="footer-newsletter-form">
+                        <input type="hidden" name="form_type" value="Newsletter">
                         <div class="input-group sm">
-                            <input type="email" placeholder="Email..." required>
-                            <button type="submit" class="btn-popup sm">Go</button>
+                            <input type="email" name="Email" placeholder="Email..." required>
+                            <button type="submit" id="footer-news-btn" class="btn-popup sm">Go</button>
                         </div>
                     </form>
                 </div>
@@ -373,17 +374,54 @@
             <div class="popup-badge">NEWSLETTER 🗞️</div>
             <h3>Restez Connectés</h3>
             <p>Toutes les infos, événements et actualités de l'association directement dans votre poche.</p>
-            <form id="newsletter-form"
-                onsubmit="event.preventDefault(); this.parentElement.parentElement.classList.remove('visible');">
+            <form id="popup-newsletter-form">
+                <input type="hidden" name="form_type" value="Newsletter">
                 <div class="input-group">
-                    <input type="email" placeholder="Votre email..." required>
-                    <button type="submit" class="btn-popup">Rejoindre</button>
+                    <input type="email" name="Email" placeholder="Votre email..." required>
+                    <button type="submit" id="popup-news-btn" class="btn-popup">Rejoindre</button>
                 </div>
             </form>
             <p class="spam-note">Rejoint par +500 adhérents 🔥</p>
         </div>
     </div>
 
+    <script>
+        // Google Apps Script integration for Newsletters
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzGy_a7dBchzw_8xnh-IZYHMmRu-1KQh5x2RottjssnmzCyCEB0rCZ_Gt2xS2UZtofSmw/exec';
+        
+        function setupNewsletter(formId, btnId, isPopup) {
+            const form = document.getElementById(formId);
+            const btn = document.getElementById(btnId);
+            
+            if (form && btn) {
+                form.addEventListener('submit', e => {
+                    e.preventDefault();
+                    const originalText = btn.innerHTML;
+                    btn.disabled = true;
+                    btn.innerHTML = "⏳";
+                    
+                    fetch(scriptURL, {
+                        method: 'POST',
+                        body: new FormData(form),
+                        mode: 'no-cors'
+                    }).catch(error => console.error('Erreur:', error));
+                    
+                    setTimeout(() => {
+                        alert('✅ Merci de votre inscription à la newsletter !');
+                        form.reset();
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                        if (isPopup) {
+                            document.getElementById('newsletter-overlay').classList.remove('visible');
+                        }
+                    }, 1200);
+                });
+            }
+        }
+
+        setupNewsletter('footer-newsletter-form', 'footer-news-btn', false);
+        setupNewsletter('popup-newsletter-form', 'popup-news-btn', true);
+    </script>
     <script src="script.js"></script>
 </body>
 
