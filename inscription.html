@@ -154,6 +154,7 @@
                 <h1>Pré-Inscription</h1>
                 <p>Remplissez ce formulaire d'inscription en ligne pour réserver votre place.</p>
                 <form id="inscription-form">
+                    <input type="hidden" name="form_type" value="Inscription">
                     <div class="form-group">
                         <label for="nom">Nom</label>
                         <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
@@ -162,6 +163,11 @@
                     <div class="form-group">
                         <label for="prenom">Prénom</label>
                         <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="Mail" placeholder="Votre email" required>
                     </div>
 
                     <div class="form-group">
