@@ -153,7 +153,7 @@
                 <li><a href="evenements.html">Événements</a></li>
                 <li><a href="reseaux.html">Nos Réseaux</a></li>
                 <li><a href="inscription.html">Inscription</a></li>
-                <li><a href="aide-financiere.html" class="active">Aides 💶</a></li>
+                <li><a href="aide-financiere.html" class="active">Aides</a></li>
 
                 <li><a href="https://www.helloasso.com/associations/la-connexion-nanterre/formulaires/2"
                         class="cta-btn">Nous Soutenir 🔥</a></li>
@@ -204,6 +204,11 @@
                         </select>
                     </div>
 
+                    <div class="form-group" id="autre-group" style="display: none;">
+                        <label for="autre-precision">Précisez votre aide</label>
+                        <input type="text" id="autre-precision" placeholder="Ex : aide du Conseil départemental…">
+                    </div>
+
                     <div class="form-group">
                         <label for="numero">Numéro / Code de l'aide</label>
                         <input type="text" id="numero" name="Numéro" placeholder="Ex : le code reçu par mail/courrier"
@@ -213,8 +218,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="email">Email <span style="font-weight:400;color:var(--text-muted);">(facultatif)</span></label>
-                        <input type="email" id="email" name="Email" placeholder="Pour vous recontacter si besoin">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="Email" placeholder="Pour vous recontacter si besoin"
+                            required>
                     </div>
 
                     <button type="submit" class="submit-btn" id="submit-btn">Envoyer mon aide</button>
@@ -223,10 +229,21 @@
                 </form>
 
                 <script>
-                    const scriptURL = 'https://script.google.com/macros/s/AKfycbzGy_a7dBchzw_8xnh-IZYHMmRu-1KQh5x2RottjssnmzCyCEB0rCZ_Gt2xS2UZtofSmw/exec';
+                    const scriptURL = 'https://script.google.com/macros/s/AKfycbw8-Ddkha946zlPteWJrFTK-xGttkoODrwwEy5raM5zUesLVrupC9g83qtgh12itOW_VQ/exec';
                     const form = document.getElementById('aide-form');
                     const btn = document.getElementById('submit-btn');
                     const msg = document.getElementById('form-msg');
+                    const aideSelect = document.getElementById('aide');
+                    const autreGroup = document.getElementById('autre-group');
+                    const autrePrecision = document.getElementById('autre-precision');
+
+                    // Affiche l'encadré "Précisez" uniquement quand "Autre" est choisi
+                    aideSelect.addEventListener('change', () => {
+                        const isAutre = aideSelect.value === 'Autre';
+                        autreGroup.style.display = isAutre ? 'block' : 'none';
+                        autrePrecision.required = isAutre;
+                        if (!isAutre) autrePrecision.value = '';
+                    });
 
                     form.addEventListener('submit', e => {
                         e.preventDefault();
@@ -234,10 +251,16 @@
                         btn.innerHTML = "Envoi en cours... ⏳";
                         msg.style.display = "none";
 
+                        // Si "Autre", on envoie la précision saisie dans la colonne "Aide"
+                        const formData = new FormData(form);
+                        if (aideSelect.value === 'Autre' && autrePrecision.value.trim()) {
+                            formData.set('Aide', autrePrecision.value.trim());
+                        }
+
                         // Using no-cors mode is essential for Google Apps Script Web Apps
                         fetch(scriptURL, {
                             method: 'POST',
-                            body: new FormData(form),
+                            body: formData,
                             mode: 'no-cors'
                         }).catch(error => console.error('Erreur réseau:', error));
 
@@ -246,6 +269,8 @@
                             msg.style.color = "#4CAF50";
                             msg.innerHTML = "✅ Merci ! Votre aide a bien été enregistrée.";
                             form.reset();
+                            autreGroup.style.display = "none";
+                            autrePrecision.required = false;
                             btn.innerHTML = "Envoyer mon aide";
                             btn.disabled = false;
                         }, 1200);
