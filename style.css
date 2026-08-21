@@ -167,6 +167,7 @@ a {
     color: var(--text);
     /* Black text as requested */
     transition: color 0.3s;
+    white-space: nowrap;
 }
 
 .nav-links a:hover {
