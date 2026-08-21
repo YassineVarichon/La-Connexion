@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S'inscrire à La Connexion | JJB Nanterre ✍️</title>
+    <title>J'ai une aide financière | La Connexion JJB Nanterre 💶</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -36,7 +36,7 @@
             line-height: 1.1;
         }
 
-        .form-container p {
+        .form-container p.intro {
             color: var(--text-muted);
             margin-bottom: 40px;
             font-family: 'Outfit', sans-serif;
@@ -53,6 +53,14 @@
             font-weight: 600;
             font-family: 'Outfit', sans-serif;
             color: var(--text);
+        }
+
+        .form-group .hint {
+            display: block;
+            margin-top: 6px;
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--text-muted);
         }
 
         .form-group input,
@@ -106,6 +114,19 @@
             min-height: 100vh;
         }
 
+        .aides-info {
+            max-width: 600px;
+            margin: 30px auto 0;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .aides-info strong {
+            color: var(--text);
+        }
+
         @media (max-width: 768px) {
             .form-container {
                 padding: 25px;
@@ -131,8 +152,8 @@
                 <li><a href="impact.html">Impact</a></li>
                 <li><a href="evenements.html">Événements</a></li>
                 <li><a href="reseaux.html">Nos Réseaux</a></li>
-                <li><a href="inscription.html" class="active">Inscription</a></li>
-                <li><a href="aide-financiere.html">Aide financière 💶</a></li>
+                <li><a href="inscription.html">Inscription</a></li>
+                <li><a href="aide-financiere.html" class="active">Aide financière 💶</a></li>
 
                 <li><a href="https://www.helloasso.com/associations/la-connexion-nanterre/formulaires/2"
                         class="cta-btn">Nous Soutenir 🔥</a></li>
@@ -148,14 +169,17 @@
     <a href="https://www.helloasso.com/associations/la-connexion-nanterre/formulaires/2" class="floating-cta"
         target="_blank">Nous Soutenir 🔥</a>
 
-    <!-- Inscription Section -->
+    <!-- Aide financière Section -->
     <section class="inscription-section">
         <div class="container">
             <div class="form-container">
-                <h1>Pré-Inscription</h1>
-                <p>Remplissez ce formulaire d'inscription en ligne pour réserver votre place.</p>
-                <form id="inscription-form">
-                    <input type="hidden" name="form_type" value="Inscription">
+                <h1>J'ai une aide financière</h1>
+                <p class="intro">Tu bénéficies d'une aide pour financer ta licence (Pass'Sport, CAF, mairie…) ?
+                    Renseigne ton numéro d'aide ci-dessous. Il nous permet de faire la demande de remboursement
+                    auprès de l'organisme.</p>
+                <form id="aide-form">
+                    <input type="hidden" name="form_type" value="AideFinanciere">
+
                     <div class="form-group">
                         <label for="nom">Nom</label>
                         <input type="text" id="nom" name="Nom" placeholder="Votre nom" required>
@@ -167,23 +191,40 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="tranche">Tranche d'âge</label>
-                        <select id="tranche" name="Tranche" required>
-                            <option value="" disabled selected>Sélectionner une tranche d'âge</option>
-                            <option value="Kids (6/9 ans)">KIDS (6/9 ans)</option>
-                            <option value="Kids/Ados (10/14 ans)">KIDS / ADOS (10/14 ans)</option>
-                            <option value="Adultes">ADULTES</option>
+                        <label for="aide">Type d'aide</label>
+                        <select id="aide" name="Aide" required>
+                            <option value="" disabled selected>Sélectionner votre aide</option>
+                            <option value="Pass'Sport">Pass'Sport (70 €)</option>
+                            <option value="Coupon Sport ANCV / Chèque-Vacances">Coupon Sport ANCV / Chèque-Vacances
+                            </option>
+                            <option value="Aide CAF">Aide CAF</option>
+                            <option value="Aide Mairie / Municipalité">Aide Mairie / Municipalité</option>
+                            <option value="Comité d'entreprise (CE / CSE)">Comité d'entreprise (CE / CSE)</option>
+                            <option value="Autre">Autre</option>
                         </select>
                     </div>
 
-                    <button type="submit" class="submit-btn" id="submit-btn">Soumettre l'inscription</button>
+                    <div class="form-group">
+                        <label for="numero">Numéro / Code de l'aide</label>
+                        <input type="text" id="numero" name="Numéro" placeholder="Ex : le code reçu par mail/courrier"
+                            required>
+                        <span class="hint">C'est le numéro que nous transmettons à l'organisme (CAF, Pass'Sport…)
+                            pour le remboursement. Recopie-le exactement.</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email <span style="font-weight:400;color:var(--text-muted);">(facultatif)</span></label>
+                        <input type="email" id="email" name="Email" placeholder="Pour vous recontacter si besoin">
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submit-btn">Envoyer mon aide</button>
                     <div id="form-msg" style="margin-top: 15px; font-weight: 600; text-align: center; display: none;">
                     </div>
                 </form>
 
                 <script>
                     const scriptURL = 'https://script.google.com/macros/s/AKfycbzGy_a7dBchzw_8xnh-IZYHMmRu-1KQh5x2RottjssnmzCyCEB0rCZ_Gt2xS2UZtofSmw/exec';
-                    const form = document.getElementById('inscription-form');
+                    const form = document.getElementById('aide-form');
                     const btn = document.getElementById('submit-btn');
                     const msg = document.getElementById('form-msg');
 
@@ -202,15 +243,23 @@
 
                         setTimeout(() => {
                             msg.style.display = "block";
-                            msg.style.color = "#4CAF50"; 
-                            msg.innerHTML = "✅ Merci ! Votre pré-inscription a bien été reçue.";
+                            msg.style.color = "#4CAF50";
+                            msg.innerHTML = "✅ Merci ! Votre aide a bien été enregistrée.";
                             form.reset();
-                            btn.innerHTML = "Soumettre l'inscription";
+                            btn.innerHTML = "Envoyer mon aide";
                             btn.disabled = false;
                         }, 1200);
                     })
                 </script>
             </div>
+
+            <p class="aides-info">
+                <strong>Quelles aides pour le JJB ?</strong> Le <strong>Pass'Sport</strong> (70 € par enfant, code
+                reçu par mail à la rentrée), les <strong>Coupons Sport ANCV / Chèques-Vacances</strong>, les aides de
+                la <strong>CAF</strong>, de la <strong>mairie</strong> ou de votre <strong>comité d'entreprise</strong>.
+                Ces aides sont souvent cumulables. En cas de doute, sélectionnez « Autre » et indiquez le numéro figurant
+                sur votre document.
+            </p>
         </div>
     </section>
 
