@@ -139,10 +139,38 @@
             color: var(--text);
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .scroll-hint {
+            display: block;
+            margin: -20px 0 35px;
+            padding: 14px 18px;
+            background: rgba(0, 0, 0, 0.03);
+            border: 1px dashed rgba(168, 28, 38, 0.35);
+            border-radius: 12px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .scroll-hint strong {
+            color: var(--primary);
+        }
+
+        .scroll-hint:hover {
+            background: rgba(168, 28, 38, 0.06);
+            border-color: var(--primary);
+        }
+
         .aides-explained {
             max-width: 600px;
             margin: 60px auto 0;
             font-family: 'Outfit', sans-serif;
+            scroll-margin-top: 110px;
         }
 
         .aides-explained h2 {
@@ -300,6 +328,9 @@
                     mairie…) ? Renseigne ton numéro d'aide ci-dessous. Il nous permet de faire la demande de
                     remboursement auprès de l'organisme.</p>
 
+                <a href="#aides-expliquees" class="scroll-hint">🤔 Tu ne sais pas quelle aide tu as, ou comment ça
+                    marche ? <strong>Lis « Les aides expliquées » plus bas&nbsp;↓</strong></a>
+
                 <div class="labaz-note">
                     <strong>💳 Coupon Labaz (Sport &amp; Culture) :</strong> validez d'abord votre coupon depuis
                     l'application Labaz. <strong>Une fois votre coupon validé</strong>, remplissez ce formulaire en
@@ -408,7 +439,7 @@
                 </script>
             </div>
 
-            <div class="aides-explained">
+            <div class="aides-explained" id="aides-expliquees">
                 <h2>Les aides expliquées 💡</h2>
                 <p class="aides-lead">Plusieurs dispositifs peuvent financer une partie (voire la totalité) de ta
                     licence de JJB. Ils sont souvent <strong>cumulables</strong>. Clique sur une aide pour voir le
