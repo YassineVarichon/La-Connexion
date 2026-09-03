@@ -156,23 +156,24 @@
                 <p>Remplissez ce formulaire d'inscription en ligne pour réserver votre place.</p>
                 <form id="inscription-form">
                     <input type="hidden" name="form_type" value="Inscription">
+                    <p class="form-required-note"><span class="req">*</span> Champs obligatoires</p>
                     <div class="form-group">
-                        <label for="nom">Nom</label>
+                        <label for="nom">Nom <span class="req">*</span></label>
                         <input type="text" id="nom" name="Nom" placeholder="Votre nom" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="prenom">Prénom</label>
+                        <label for="prenom">Prénom <span class="req">*</span></label>
                         <input type="text" id="prenom" name="Prénom" placeholder="Votre prénom" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="email">Adresse mail</label>
+                        <label for="email">Adresse mail <span class="req">*</span></label>
                         <input type="email" id="email" name="Adresse mail" placeholder="Votre adresse mail" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="tranche">Tranche d'âge</label>
+                        <label for="tranche">Tranche d'âge <span class="req">*</span></label>
                         <select id="tranche" name="Tranche" required>
                             <option value="" disabled selected>Sélectionner une tranche d'âge</option>
                             <option value="Kids (6/9 ans)">KIDS (6/9 ans)</option>
