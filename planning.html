@@ -23,8 +23,14 @@
         #planning-section-bg {
             position: relative;
             padding-top: 150px;
-            /* L'image sera fixée pour un effet parallaxe premium */
-            background: url('assets/fond-planning.jpg') center/cover no-repeat fixed;
+            /* Couleur crème affichée immédiatement, l'image se pose par-dessus une fois chargée */
+            background-color: var(--bg);
+            background-image: url('assets/fond-planning.jpg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            /* 'scroll' au lieu de 'fixed' : bien plus fluide, surtout sur mobile */
+            background-attachment: scroll;
             min-height: 100vh;
         }
 
@@ -58,53 +64,71 @@
         /* --- TARIFS --- */
         .tarifs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 22px;
             max-width: 1000px;
             margin: 0 auto;
         }
 
         .tarif-card {
-            background: rgba(255, 255, 255, 0.90);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-radius: 20px;
-            border-top: 5px solid var(--accent-color, #A81C26);
+            border-radius: 22px;
+            overflow: hidden;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-            padding: 30px 25px;
-            text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
 
         .tarif-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+            transform: translateY(-8px);
+            box-shadow: 0 25px 55px rgba(0, 0, 0, 0.15);
         }
 
-        .tarif-emoji {
-            font-size: 2.4rem;
-            margin-bottom: 10px;
+        .tarif-head {
+            background: var(--accent-color, #A81C26);
+            color: #fff;
+            padding: 26px 22px 22px;
+            text-align: center;
         }
 
-        .tarif-card h3 {
+        .tarif-head h3 {
             font-family: 'Syne', sans-serif;
-            font-size: 1.3rem;
-            color: var(--text);
+            font-size: 1.35rem;
+            letter-spacing: 0.5px;
             margin-bottom: 6px;
+            color: #fff;
         }
 
         .tarif-age {
             font-family: 'Outfit', sans-serif;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 18px;
-            min-height: 1.4em;
+            font-size: 0.85rem;
+            font-weight: 400;
+            opacity: 0.85;
+            display: block;
         }
 
         .tarif-price {
+            padding: 26px 22px 30px;
+            text-align: center;
             font-family: 'Syne', sans-serif;
-            font-size: 2.2rem;
             font-weight: 800;
+            color: var(--text);
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 2px;
+        }
+
+        .tarif-price .amount {
+            font-size: 3rem;
+            line-height: 1;
+        }
+
+        .tarif-price .cur {
+            font-size: 1.6rem;
             color: var(--accent-color, #A81C26);
         }
     </style>
@@ -149,7 +173,7 @@
         <div class="container">
             <div class="section-header">
                 <h2>Planning 2026-2027</h2>
-                <p>Gymnase Evariste Galois, Nanterre 📍</p>
+                <p>Gymnase Evariste Galois, Nanterre</p>
             </div>
 
             <div class="planning-dynamic-grid">
@@ -157,7 +181,6 @@
                 <div class="planning-card-v2" style="--accent-color: #A81C26;">
                     <div class="card-header">
                         <h3>LUNDI</h3>
-                        <div class="day-icon">📅</div>
                     </div>
                     <div class="slots-list">
                         <div class="slot-item">
@@ -166,7 +189,6 @@
                                 <strong>KIDS & ADOS</strong>
                                 <small>5 / 15 ans</small>
                             </div>
-                            <span class="slot-emoji">⚡</span>
                         </div>
                     </div>
                 </div>
@@ -175,7 +197,6 @@
                 <div class="planning-card-v2" style="--accent-color: #4E342E;">
                     <div class="card-header">
                         <h3>MARDI</h3>
-                        <div class="day-icon">🌙</div>
                     </div>
                     <div class="slots-list">
                         <div class="slot-item">
@@ -184,7 +205,6 @@
                                 <strong>ADULTES</strong>
                                 <small>16 ans +</small>
                             </div>
-                            <span class="slot-emoji">🥋</span>
                         </div>
                     </div>
                 </div>
@@ -193,7 +213,6 @@
                 <div class="planning-card-v2" style="--accent-color: #000000;">
                     <div class="card-header">
                         <h3>JEUDI</h3>
-                        <div class="day-icon">🌆</div>
                     </div>
                     <div class="slots-list">
                         <div class="slot-item">
@@ -202,7 +221,6 @@
                                 <strong>KIDS</strong>
                                 <small>5 / 9 ans</small>
                             </div>
-                            <span class="slot-emoji">🐣</span>
                         </div>
                         <div class="slot-item">
                             <span class="time">18h00 - 19h00</span>
@@ -210,7 +228,6 @@
                                 <strong>ADOS</strong>
                                 <small>10 / 15 ans</small>
                             </div>
-                            <span class="slot-emoji">⚡</span>
                         </div>
                     </div>
                 </div>
@@ -219,7 +236,6 @@
                 <div class="planning-card-v2" style="--accent-color: #A81C26;">
                     <div class="card-header">
                         <h3>VENDREDI</h3>
-                        <div class="day-icon">🔥</div>
                     </div>
                     <div class="slots-list">
                         <div class="slot-item">
@@ -228,7 +244,6 @@
                                 <strong>KIDS</strong>
                                 <small>5 / 9 ans</small>
                             </div>
-                            <span class="slot-emoji">🐣</span>
                         </div>
                         <div class="slot-item">
                             <span class="time">19h00 - 20h00</span>
@@ -236,7 +251,6 @@
                                 <strong>ADOS</strong>
                                 <small>10 / 15 ans</small>
                             </div>
-                            <span class="slot-emoji">⚡</span>
                         </div>
                         <div class="slot-item">
                             <span class="time">20h00 - 22h00</span>
@@ -244,16 +258,14 @@
                                 <strong>ADULTES</strong>
                                 <small>16 ans +</small>
                             </div>
-                            <span class="slot-emoji">🥋</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- SAMEDI CARD -->
-                <div class="planning-card-v2" style="--accent-color: #C2185B;">
+                <div class="planning-card-v2" style="--accent-color: #B8860B;">
                     <div class="card-header">
                         <h3>SAMEDI</h3>
-                        <div class="day-icon">🌸</div>
                     </div>
                     <div class="slots-list">
                         <div class="slot-item">
@@ -262,7 +274,6 @@
                                 <strong>100% FEMMES</strong>
                                 <small>Découverte / Initiation</small>
                             </div>
-                            <span class="slot-emoji">💪</span>
                         </div>
                     </div>
                 </div>
@@ -270,41 +281,44 @@
 
             <!-- TARIFS -->
             <div class="section-header" style="margin-top: 80px;">
-                <h2>Tarifs 💳</h2>
-                <p>Cotisation à l'année — aides financières acceptées 💰</p>
+                <h2>Tarifs</h2>
+                <p>Cotisation à l'année — aides financières acceptées</p>
             </div>
 
             <div class="tarifs-grid">
                 <div class="tarif-card" style="--accent-color: #A81C26;">
-                    <div class="tarif-emoji">🐣</div>
-                    <h3>KIDS</h3>
-                    <p class="tarif-age">5 - 9 ans</p>
-                    <div class="tarif-price">150 €</div>
+                    <div class="tarif-head">
+                        <h3>KIDS</h3>
+                        <span class="tarif-age">5 - 9 ans</span>
+                    </div>
+                    <div class="tarif-price"><span class="amount">150</span><span class="cur">€</span></div>
                 </div>
-                <div class="tarif-card" style="--accent-color: #4E342E;">
-                    <div class="tarif-emoji">⚡</div>
-                    <h3>ADOS</h3>
-                    <p class="tarif-age">10 - 15 ans</p>
-                    <div class="tarif-price">180 €</div>
+                <div class="tarif-card" style="--accent-color: #7A1721;">
+                    <div class="tarif-head">
+                        <h3>ADOS</h3>
+                        <span class="tarif-age">10 - 15 ans</span>
+                    </div>
+                    <div class="tarif-price"><span class="amount">180</span><span class="cur">€</span></div>
                 </div>
-                <div class="tarif-card" style="--accent-color: #000000;">
-                    <div class="tarif-emoji">🥋</div>
-                    <h3>ADULTES</h3>
-                    <p class="tarif-age">16 ans +</p>
-                    <div class="tarif-price">200 €</div>
+                <div class="tarif-card" style="--accent-color: #3F2A24;">
+                    <div class="tarif-head">
+                        <h3>ADULTES</h3>
+                        <span class="tarif-age">16 ans +</span>
+                    </div>
+                    <div class="tarif-price"><span class="amount">200</span><span class="cur">€</span></div>
                 </div>
-                <div class="tarif-card" style="--accent-color: #C2185B;">
-                    <div class="tarif-emoji">🌸</div>
-                    <h3>100% FEMMES</h3>
-                    <p class="tarif-age">Découverte / Initiation</p>
-                    <div class="tarif-price">50 €</div>
+                <div class="tarif-card" style="--accent-color: #22303C;">
+                    <div class="tarif-head">
+                        <h3>100% FEMMES</h3>
+                        <span class="tarif-age">Découverte / Initiation</span>
+                    </div>
+                    <div class="tarif-price"><span class="amount">50</span><span class="cur">€</span></div>
                 </div>
             </div>
 
-            <div style="text-align: center; margin-top: 35px;">
-                <a href="aide-financiere.html" class="btn-ghost"
-                    style="border: 1px solid rgba(168, 28, 38, 0.3); background: rgba(168, 28, 38, 0.08); font-weight: 700; padding: 14px 32px; color: black; display: inline-block;">💰
-                    J'ai une aide financière</a>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="aide-financiere.html" class="btn-primary"
+                    style="display: inline-block; padding: 16px 36px; font-weight: 700;">J'ai une aide financière →</a>
             </div>
 
             <!-- Z-TEAM BAR (Updated) -->
@@ -314,13 +328,12 @@
                     <p>En tant qu'adhérent, vous avez <strong>accès illimité</strong> aux cours de Boulogne (Lundi,
                         Jeudi, Samedi, Dimanche).</p>
                 </div>
-                <div class="z-badge">INCLUS ✅</div>
+                <div class="z-badge">INCLUS</div>
             </div>
 
             <div style="text-align: center; margin-top: 60px;">
                 <span class="btn-ghost"
-                    style="cursor: default; pointer-events: none; border: 1px solid rgba(168, 28, 38, 0.3); background: rgba(168, 28, 38, 0.1); font-size: 1.1rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 15px 40px; color: black;">📍
-                    Plan d'accès</span>
+                    style="cursor: default; pointer-events: none; border: 1px solid rgba(168, 28, 38, 0.3); background: rgba(168, 28, 38, 0.1); font-size: 1.1rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 15px 40px; color: black;">Plan d'accès</span>
             </div>
         </div>
     </section>
@@ -329,26 +342,24 @@
     <section class="section scroll-trigger-item" style="padding-top: 0;">
         <div class="container">
             <div class="section-header" style="margin-bottom: 40px;">
-                <h2>Le Dojo 📍</h2>
+                <h2>Le Dojo</h2>
                 <p>Là où tout commence.</p>
             </div>
 
             <div class="location-grid">
                 <!-- Address Card -->
                 <div class="location-card">
-                    <div class="loc-icon-big">🥋</div>
                     <h3>Complexe Sportif</h3>
                     <div class="address-box">
                         <p class="street">5 Rue des Écoles</p>
                         <p class="city">92000 Nanterre</p>
                     </div>
                     <div class="loc-details">
-                        <p><span>🚇</span> RER A - Nanterre Préfecture</p>
-                        <p><span>🅿️</span> Parking Gratuit</p>
+                        <p>RER A — Nanterre Préfecture</p>
+                        <p>Parking gratuit</p>
                     </div>
                     <a href="https://www.google.com/maps/dir//5+Rue+des+Ecoles,+92000+Nanterre" target="_blank"
-                        class="btn-primary" style="width: 100%; justify-content: center; margin-top: 20px;">S'y rendre
-                        🗺️</a>
+                        class="btn-primary" style="width: 100%; justify-content: center; margin-top: 20px;">S'y rendre</a>
                 </div>
 
                 <!-- Map Frame (iOS Style) -->
@@ -370,10 +381,10 @@
         <div class="container footer-flex">
             <div class="brand">
                 <h3>LA CONNEXION</h3>
-                <p>Nanterre, France 🇫🇷</p>
+                <p>Nanterre, France</p>
             </div>
             <div class="creator">
-                <p style="color: black;">Site réalisé par Yassine Varichon 🧑‍🍳</p>
+                <p style="color: black;">Site réalisé par Yassine Varichon</p>
             </div>
         </div>
     </footer>

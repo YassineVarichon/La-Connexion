@@ -223,7 +223,7 @@ const blogPosts = {
         `
     },
     2: {
-        title: "Comprendre les Ceintures de JJB 🥋",
+        title: "Comprendre les Ceintures de JJB",
         img: "assets/blog_gi.png",
         content: `
             <h3>Le Long Chemin vers la Noire</h3>
@@ -335,21 +335,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatbotHTML = `
         <div id="lc-chatbot">
             <button id="lc-chatbot-trigger">
-                <span>💬</span>
+                <i class="fas fa-comments"></i>
             </button>
             <div id="lc-chatbot-window">
                 <div class="lc-chatbot-header">
                     <h4>Assistant La Connexion</h4>
-                    <button id="lc-chatbot-close">✕</button>
+                    <button id="lc-chatbot-close">&times;</button>
                 </div>
                 <div class="lc-chatbot-body" id="lc-chatbot-messages">
-                    <div class="lc-msg lc-msg-bot">Bonjour ! Je suis l'assistant en ligne de La Connexion 🥋. Comment puis-je vous aider ?</div>
+                    <div class="lc-msg lc-msg-bot">Bonjour ! Je suis l'assistant en ligne de La Connexion. Comment puis-je vous aider ?</div>
                     <div class="lc-chat-options">
-                        <button class="lc-option-btn" data-action="planning">📅 Voir le Planning</button>
-                        <button class="lc-option-btn" data-action="inscription">📝 Comment s'inscrire ?</button>
-                        <button class="lc-option-btn" data-action="localisation">📍 Où êtes-vous situés ?</button>
-                        <button class="lc-option-btn" data-action="soutenir">❤️ Soutenir l'association</button>
-                        <button class="lc-option-btn" data-action="contact">📞 Comment vous contacter</button>
+                        <button class="lc-option-btn" data-action="planning">Voir le Planning</button>
+                        <button class="lc-option-btn" data-action="inscription">Comment s'inscrire ?</button>
+                        <button class="lc-option-btn" data-action="localisation">Où êtes-vous situés ?</button>
+                        <button class="lc-option-btn" data-action="soutenir">Soutenir l'association</button>
+                        <button class="lc-option-btn" data-action="contact">Comment vous contacter</button>
                     </div>
                 </div>
             </div>
@@ -392,20 +392,20 @@ document.addEventListener('DOMContentLoaded', () => {
         1. Certificat médical<br>
         2. Deux photos d'identité<br>
         3. Le règlement de la cotisation<br><br>
-        On vous prête un kimono pour essayer ! 🥋`,
+        On vous prête un kimono pour essayer !`,
 
         'localisation': `<b>Localisation :</b><br>
         Tous les cours se déroulent au <b>Gymnase Evariste Galois</b>,<br>
         5 Rue des Ecoles, 92000 Nanterre.<br>
-        🚇 À côté du RER A (Nanterre Préfecture).`,
+        À côté du RER A (Nanterre Préfecture).`,
 
         'soutenir': `<b>Soutenir l'asso :</b><br>
         Votre soutien nous permet de changer des vies. Vous pouvez faire un don sur HelloAsso (le don est déductible de vos impôts à 66%) !<br><br>
-        👉 <a href="https://www.helloasso.com/associations/la-connexion-nanterre/formulaires/2" target="_blank" style="color:var(--primary); font-weight:bold; text-decoration:underline;">Faire un don ici</a>`,
+        <a href="https://www.helloasso.com/associations/la-connexion-nanterre/formulaires/2" target="_blank" style="color:var(--primary); font-weight:bold; text-decoration:underline;">Faire un don ici</a>`,
 
         'contact': `<b>Contact :</b><br>
-        📧 Par email : <a href="mailto:laconnexionasso@gmail.com" style="color:var(--text); font-weight:bold;">laconnexionasso@gmail.com</a><br><br>
-        📱 Sur Insta : <a href="https://www.instagram.com/laconnexionasso/" target="_blank" style="color:var(--primary); font-weight:bold;">@laconnexionasso</a>`
+        Par email : <a href="mailto:laconnexionasso@gmail.com" style="color:var(--text); font-weight:bold;">laconnexionasso@gmail.com</a><br><br>
+        Sur Insta : <a href="https://www.instagram.com/laconnexionasso/" target="_blank" style="color:var(--primary); font-weight:bold;">@laconnexionasso</a>`
     };
 
     function attachEvents() {
@@ -435,11 +435,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     setTimeout(() => {
                         messages.insertAdjacentHTML('beforeend', `
                         <div class="lc-chat-options">
-                            <button class="lc-option-btn" data-action="planning">📅 Voir le Planning</button>
-                            <button class="lc-option-btn" data-action="inscription">📝 Comment s'inscrire ?</button>
-                            <button class="lc-option-btn" data-action="localisation">📍 Où êtes-vous situés ?</button>
-                            <button class="lc-option-btn" data-action="soutenir">❤️ Soutenir l'association</button>
-                            <button class="lc-option-btn" data-action="contact">📞 Comment vous contacter</button>
+                            <button class="lc-option-btn" data-action="planning">Voir le Planning</button>
+                            <button class="lc-option-btn" data-action="inscription">Comment s'inscrire ?</button>
+                            <button class="lc-option-btn" data-action="localisation">Où êtes-vous situés ?</button>
+                            <button class="lc-option-btn" data-action="soutenir">Soutenir l'association</button>
+                            <button class="lc-option-btn" data-action="contact">Comment vous contacter</button>
                         </div>`);
                         messages.scrollTop = messages.scrollHeight;
                         attachEvents(); // Recursive bind
