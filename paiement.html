@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adhésion &amp; Paiement | La Connexion JJB Nanterre</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=block"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile_responsive.css">
+    <link rel="shortcut icon" href="assets/logo.jpg" type="image/x-icon">
+    <link rel="icon" href="assets/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .pay-section {
+            padding-top: 160px;
+            padding-bottom: 100px;
+            background: var(--bg);
+            min-height: 100vh;
+        }
+
+        .pay-header {
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto 50px;
+        }
+
+        .pay-header h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 2.8rem;
+            color: var(--text);
+            margin-bottom: 18px;
+            line-height: 1.1;
+        }
+
+        .pay-header p {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Tarifs (repris du planning) */
+        .tarifs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 22px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .tarif-card {
+            background: #fff;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tarif-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 55px rgba(0, 0, 0, 0.15);
+        }
+
+        .tarif-head {
+            background: var(--accent-color, #A81C26);
+            color: #fff;
+            padding: 26px 22px 22px;
+            text-align: center;
+        }
+
+        .tarif-head h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.35rem;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+            color: #fff;
+        }
+
+        .tarif-age {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 400;
+            opacity: 0.85;
+            display: block;
+        }
+
+        .tarif-price {
+            padding: 26px 22px 30px;
+            text-align: center;
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            color: var(--text);
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 2px;
+        }
+
+        .tarif-price .amount {
+            font-size: 3rem;
+            line-height: 1;
+        }
+
+        .tarif-price .cur {
+            font-size: 1.6rem;
+            color: var(--accent-color, #A81C26);
+        }
+
+        .pay-cta-wrap {
+            text-align: center;
+            margin: 55px auto 0;
+            max-width: 640px;
+        }
+
+        .pay-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background-color: var(--primary);
+            color: #fff;
+            padding: 20px 48px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 100px;
+            font-family: 'Outfit', sans-serif;
+            text-decoration: none;
+            box-shadow: 0 12px 30px rgba(168, 28, 38, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .pay-cta:hover {
+            background-color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .pay-secure {
+            margin-top: 16px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .pay-info {
+            max-width: 640px;
+            margin: 55px auto 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .pay-info .info-box {
+            background: rgba(0, 0, 0, 0.03);
+            border-radius: 16px;
+            padding: 22px 24px;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .pay-info h4 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .pay-info ul {
+            margin: 0;
+            padding-left: 18px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .pay-info a {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .pay-info {
+                grid-template-columns: 1fr;
+            }
+
+            .pay-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <div class="logo">
+                <a href="index.html" style="display: flex; align-items: center; color: black;">
+                    <img src="assets/logo.jpg" alt="Logo">
+                    <span>LA CONNEXION</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#mission">Mission</a></li>
+                <li><a href="planning.html">Planning</a></li>
+                <li><a href="impact.html">Impact</a></li>
+                <li><a href="evenements.html">Événements</a></li>
+                <li><a href="reseaux.html">Nos Réseaux</a></li>
+                <li><a href="inscription.html">Inscription</a></li>
+                <li><a href="aide-financiere.html">Aides</a></li>
+                <li><a href="paiement.html" class="active">Adhésion</a></li>
+
+                <li><a href="https://www.helloasso.com/associations/la-connexion-nanterre/formulaires/2"
+                        class="cta-btn">Nous Soutenir 🔥</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Desktop Floating CTA -->
+    <a href="https://www.helloasso.com/associations/la-connexion-nanterre/formulaires/2" class="floating-cta"
+        target="_blank">Nous Soutenir 🔥</a>
+
+    <!-- Paiement Section -->
+    <section class="pay-section">
+        <div class="container">
+            <div class="pay-header">
+                <h1>Adhésion &amp; Paiement</h1>
+                <p>Règle ta cotisation annuelle en ligne, en toute sécurité, via notre plateforme HelloAsso.
+                    Le paiement est immédiat et tu reçois un reçu par email.</p>
+            </div>
+
+            <div class="tarifs-grid">
+                <div class="tarif-card" style="--accent-color: #A81C26;">
+                    <div class="tarif-head">
+                        <h3>KIDS</h3>
+                        <span class="tarif-age">5 - 9 ans</span>
+                    </div>
+                    <div class="tarif-price"><span class="amount">150</span><span class="cur">€</span></div>
+                </div>
+                <div class="tarif-card" style="--accent-color: #7A1721;">
+                    <div class="tarif-head">
+                        <h3>ADOS</h3>
+                        <span class="tarif-age">10 - 15 ans</span>
+                    </div>
+                    <div class="tarif-price"><span class="amount">180</span><span class="cur">€</span></div>
+                </div>
+                <div class="tarif-card" style="--accent-color: #3F2A24;">
+                    <div class="tarif-head">
+                        <h3>ADULTES</h3>
+                        <span class="tarif-age">16 ans +</span>
+                    </div>
+                    <div class="tarif-price"><span class="amount">200</span><span class="cur">€</span></div>
+                </div>
+                <div class="tarif-card" style="--accent-color: #22303C;">
+                    <div class="tarif-head">
+                        <h3>100% FEMMES</h3>
+                        <span class="tarif-age">Découverte / Initiation</span>
+                    </div>
+                    <div class="tarif-price"><span class="amount">50</span><span class="cur">€</span></div>
+                </div>
+            </div>
+
+            <div class="pay-cta-wrap">
+                <a href="https://www.helloasso.com/associations/la-connexion-nanterre/formulaires/2" target="_blank"
+                    rel="noopener" class="pay-cta"><i class="fas fa-lock"></i> Payer ma cotisation en ligne</a>
+                <p class="pay-secure"><i class="fas fa-shield-halved"></i> Paiement 100% sécurisé via HelloAsso —
+                    carte bancaire, reçu automatique.</p>
+            </div>
+
+            <div class="pay-info">
+                <div class="info-box">
+                    <h4>Avant de venir</h4>
+                    <ul>
+                        <li>Certificat médical de non contre-indication au JJB</li>
+                        <li>Deux photos d'identité</li>
+                        <li>Le justificatif de paiement (reçu HelloAsso)</li>
+                    </ul>
+                </div>
+                <div class="info-box">
+                    <h4>Une aide financière ?</h4>
+                    <ul>
+                        <li>Pass'Sport, Coupon Labaz, CAF, mairie…</li>
+                        <li>Renseigne ton numéro d'aide sur la page
+                            <a href="aide-financiere.html">Aides financières</a>.</li>
+                        <li>Ces aides se déduisent de ta cotisation.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-flex">
+            <div class="brand">
+                <h3>LA CONNEXION</h3>
+                <p>Nanterre, France</p>
+            </div>
+            <div class="creator">
+                <p style="color: black;">Site réalisé par Yassine Varichon</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
