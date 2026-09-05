@@ -208,11 +208,21 @@
                     }
                     ageSelect.insertAdjacentHTML('beforeend', '<option value="Plus de 70 ans">Plus de 70 ans</option>');
 
+                    let hideMsgTimer = null;
+
+                    // Dès que l'utilisateur recommence à remplir, on masque l'ancien message de confirmation
+                    form.addEventListener('input', () => {
+                        if (msg.style.display === "block") {
+                            msg.style.display = "none";
+                        }
+                    });
+
                     form.addEventListener('submit', e => {
                         e.preventDefault();
                         btn.disabled = true;
                         btn.innerHTML = "Envoi en cours...";
                         msg.style.display = "none";
+                        if (hideMsgTimer) clearTimeout(hideMsgTimer);
 
                         // Using no-cors mode is essential for Google Apps Script Web Apps
                         fetch(scriptURL, {
@@ -223,11 +233,13 @@
 
                         setTimeout(() => {
                             msg.style.display = "block";
-                            msg.style.color = "#4CAF50"; 
-                            msg.innerHTML = "✅ Merci ! Votre pré-inscription a bien été reçue.";
+                            msg.style.color = "#4CAF50";
+                            msg.innerHTML = "Merci ! Votre pré-inscription a bien été reçue.";
                             form.reset();
                             btn.innerHTML = "Soumettre l'inscription";
                             btn.disabled = false;
+                            // Le message disparaît tout seul au bout de 6 secondes
+                            hideMsgTimer = setTimeout(() => { msg.style.display = "none"; }, 6000);
                         }, 1200);
                     })
                 </script>
