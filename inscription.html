@@ -173,6 +173,13 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="age">Âge <span class="req">*</span></label>
+                        <select id="age" name="Âge" required>
+                            <option value="" disabled selected>Sélectionner l'âge</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
                         <label for="tranche">Catégorie <span class="req">*</span></label>
                         <select id="tranche" name="Tranche" required>
                             <option value="" disabled selected>Sélectionner une catégorie</option>
@@ -194,10 +201,17 @@
                     const btn = document.getElementById('submit-btn');
                     const msg = document.getElementById('form-msg');
 
+                    // Remplissage du menu déroulant Âge : de 5 à 70 ans, puis "Plus de 70 ans"
+                    const ageSelect = document.getElementById('age');
+                    for (let a = 5; a <= 70; a++) {
+                        ageSelect.insertAdjacentHTML('beforeend', `<option value="${a} ans">${a} ans</option>`);
+                    }
+                    ageSelect.insertAdjacentHTML('beforeend', '<option value="Plus de 70 ans">Plus de 70 ans</option>');
+
                     form.addEventListener('submit', e => {
                         e.preventDefault();
                         btn.disabled = true;
-                        btn.innerHTML = "Envoi en cours... ⏳";
+                        btn.innerHTML = "Envoi en cours...";
                         msg.style.display = "none";
 
                         // Using no-cors mode is essential for Google Apps Script Web Apps
