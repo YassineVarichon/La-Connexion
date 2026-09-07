@@ -106,6 +106,34 @@
             min-height: 100vh;
         }
 
+        .form-check {
+            margin: 5px 0 10px;
+        }
+
+        .form-check label {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--text-muted);
+        }
+
+        .form-check input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            min-width: 20px;
+            margin-top: 2px;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        .form-check strong {
+            color: var(--text);
+        }
+
         .legal-note {
             max-width: 600px;
             margin: 30px auto 0;
@@ -260,6 +288,16 @@
                         <span class="hint">J'autorise, en cas d'urgence et si je ne peux pas être joint(e), les
                             responsables du club / de l'association à prendre les mesures nécessaires à la sécurité et à
                             la prise en charge de mon enfant, notamment à contacter les services d'urgence.</span>
+                    </div>
+
+                    <div class="form-check">
+                        <label for="consent">
+                            <input type="checkbox" id="consent" name="Consentement" value="Oui" required>
+                            <span>En cochant cette case, je (ou le représentant légal) reconnais avoir pris
+                                connaissance de la <strong>politique de protection des données (RGPD)</strong> et des
+                                informations d'<strong>assurance</strong> de l'association indiquées ci-dessous, et
+                                j'accepte les conditions d'inscription. <span class="req">*</span></span>
+                        </label>
                     </div>
 
                     <button type="submit" class="submit-btn" id="submit-btn">Soumettre l'inscription</button>
