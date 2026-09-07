@@ -380,12 +380,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const responses = {
-        'planning': `<b>Horaires :</b><br><br>
-        • Lundi : 18h00 - 19h30 & 20h00 - 22h00<br>
-        • Mercredi : 20h00 - 22h00<br>
-        • Vendredi : 18h00 - 22h00<br>
-        • Samedi : 10h00 - 12h00 (Sparring)<br><br>
-        <i>Les horaires peuvent varier selon l'âge.</i>`,
+        'planning': `<b>Horaires 2026-2027 :</b><br><br>
+        • Lundi : 18h00 - 19h30 (Kids & Ados)<br>
+        • Mardi : 20h00 - 22h00 (Adultes)<br>
+        • Jeudi : 17h00 - 18h00 (Kids) · 18h00 - 19h00 (Ados)<br>
+        • Vendredi : 18h00 - 19h00 (Kids) · 19h00 - 20h00 (Ados) · 20h00 - 22h00 (Adultes)<br>
+        • Samedi : 16h00 - 18h00 (100% Femmes)<br><br>
+        <i>Gymnase Evariste Galois, Nanterre.</i>`,
 
         'inscription': `<b>S'inscrire :</b><br>Commencez par remplir le formulaire en ligne sur notre onglet <a href="inscription" style="color:var(--primary); font-weight:bold; text-decoration:underline;">Pré-inscription</a>.<br><br>
         Ensuite, rejoignez-nous sur place avec :<br>

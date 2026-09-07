@@ -186,6 +186,15 @@ a {
     margin-left: 2px;
 }
 
+.form-group .hint {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.85rem;
+    font-weight: 400;
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-muted);
+}
+
 .form-required-note {
     font-family: 'Outfit', sans-serif;
     font-size: 0.85rem;

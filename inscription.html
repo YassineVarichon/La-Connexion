@@ -129,12 +129,10 @@
                 <li><a href="index.html#mission">Mission</a></li>
                 <li><a href="planning.html">Planning</a></li>
                 <li><a href="impact.html">Impact</a></li>
-                <li><a href="evenements.html">Événements</a></li>
                 <li><a href="reseaux.html">Nos Réseaux</a></li>
                 <li><a href="inscription.html" class="active">Inscription</a></li>
                 <li><a href="certificat.html">Certificat</a></li>
                 <li><a href="aide-financiere.html">Aides</a></li>
-                <li><a href="https://www.helloasso.com/associations/la-connexion-nanterre/formulaires/2">Nous Soutenir</a></li>
 
                 <li><a href="https://www.helloasso.com/associations/la-connexion-nanterre/formulaires/3" target="_blank" rel="noopener" class="cta-btn">Adhésion</a></li>
             </ul>
@@ -196,6 +194,31 @@
                             <option value="Ados (10/15 ans)">ADOS (10/15 ans)</option>
                             <option value="Adultes (16 ans +)">ADULTES (16 ans +)</option>
                         </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nom-parent">Nom du parent / tuteur</label>
+                        <input type="text" id="nom-parent" name="Nom parent"
+                            placeholder="Nom et prénom du parent">
+                        <span class="hint">Obligatoire si le pratiquant est mineur.</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tel-parent">Téléphone du parent / tuteur</label>
+                        <input type="tel" id="tel-parent" name="Téléphone parent"
+                            placeholder="Ex : 06 12 34 56 78">
+                        <span class="hint">Obligatoire si le pratiquant est mineur.</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="droit-image">Droit à l'image <span class="req">*</span></label>
+                        <select id="droit-image" name="Droit à l'image" required>
+                            <option value="" disabled selected>Sélectionner</option>
+                            <option value="Oui">Oui, j'autorise</option>
+                            <option value="Non">Non, je n'autorise pas</option>
+                        </select>
+                        <span class="hint">Autorises-tu La Connexion à utiliser des photos/vidéos où tu apparais
+                            (site, réseaux sociaux) ?</span>
                     </div>
 
                     <button type="submit" class="submit-btn" id="submit-btn">Soumettre l'inscription</button>
