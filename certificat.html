@@ -252,17 +252,18 @@
                         const reader = new FileReader();
                         reader.onload = function () {
                             const base64 = reader.result.split(',')[1];
-                            const fd = new FormData();
-                            fd.append('form_type', 'Certificat');
-                            fd.append('Nom', document.getElementById('nom').value);
-                            fd.append('Prénom', document.getElementById('prenom').value);
-                            fd.append('filename', file.name);
-                            fd.append('mimeType', file.type || 'application/octet-stream');
-                            fd.append('fileData', base64);
+                            // urlencoded : Apps Script remplit e.parameter de façon fiable (contrairement au multipart)
+                            const params = new URLSearchParams();
+                            params.append('form_type', 'Certificat');
+                            params.append('Nom', document.getElementById('nom').value);
+                            params.append('Prénom', document.getElementById('prenom').value);
+                            params.append('filename', file.name);
+                            params.append('mimeType', file.type || 'application/octet-stream');
+                            params.append('fileData', base64);
 
                             fetch(scriptURL, {
                                 method: 'POST',
-                                body: fd,
+                                body: params,
                                 mode: 'no-cors'
                             }).catch(error => console.error('Erreur réseau:', error));
 
