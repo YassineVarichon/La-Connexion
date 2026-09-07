@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S'inscrire à La Connexion | JJB Nanterre ✍️</title>
+    <title>Envoyer mon certificat médical | La Connexion JJB Nanterre</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -29,18 +29,30 @@
         }
 
         .form-container h1 {
-            font-family: 'Syne', sans-serif;
+            font-family: var(--font-heading);
             color: var(--text);
             margin-bottom: 20px;
-            font-size: 2.8rem;
+            font-size: 2.6rem;
             line-height: 1.1;
         }
 
-        .form-container p {
+        .form-container p.intro {
             color: var(--text-muted);
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             font-family: 'Outfit', sans-serif;
             font-size: 1.1rem;
+        }
+
+        .form-required-note {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .req {
+            color: var(--primary);
+            font-weight: 700;
         }
 
         .form-group {
@@ -55,8 +67,8 @@
             color: var(--text);
         }
 
-        .form-group input,
-        .form-group select {
+        .form-group input[type="text"],
+        .form-group input[type="file"] {
             width: 100%;
             padding: 15px;
             border: 1px solid rgba(0, 0, 0, 0.1);
@@ -69,12 +81,29 @@
             color: var(--text);
         }
 
-        .form-group input:focus,
-        .form-group select:focus {
+        .form-group input:focus {
             outline: none;
             border-color: var(--primary);
             background: white;
             box-shadow: 0 0 0 4px rgba(168, 28, 38, 0.1);
+        }
+
+        .form-group .hint {
+            display: block;
+            margin-top: 6px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .privacy-note {
+            background: rgba(0, 0, 0, 0.03);
+            border-radius: 12px;
+            padding: 14px 18px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: var(--text-muted);
+            margin-bottom: 30px;
         }
 
         .submit-btn {
@@ -89,7 +118,7 @@
             font-family: 'Outfit', sans-serif;
             transition: all 0.3s ease;
             width: 100%;
-            margin-top: 20px;
+            margin-top: 10px;
             box-shadow: 0 10px 25px rgba(168, 28, 38, 0.3);
         }
 
@@ -97,6 +126,11 @@
             background-color: #000;
             transform: translateY(-3px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: default;
         }
 
         .inscription-section {
@@ -131,11 +165,10 @@
                 <li><a href="impact.html">Impact</a></li>
                 <li><a href="evenements.html">Événements</a></li>
                 <li><a href="reseaux.html">Nos Réseaux</a></li>
-                <li><a href="inscription.html" class="active">Inscription</a></li>
-                <li><a href="certificat.html">Certificat</a></li>
+                <li><a href="inscription.html">Inscription</a></li>
+                <li><a href="certificat.html" class="active">Certificat</a></li>
                 <li><a href="aide-financiere.html">Aides</a></li>
                 <li><a href="https://www.helloasso.com/associations/la-connexion-nanterre/formulaires/2">Nous Soutenir</a></li>
-
                 <li><a href="paiement.html" class="cta-btn">Adhésion</a></li>
             </ul>
             <div class="burger">
@@ -149,15 +182,18 @@
     <a href="https://www.helloasso.com/associations/la-connexion-nanterre/formulaires/2" class="floating-cta"
         target="_blank">Nous Soutenir</a>
 
-    <!-- Inscription Section -->
+    <!-- Certificat Section -->
     <section class="inscription-section">
         <div class="container">
             <div class="form-container">
-                <h1>Pré-Inscription</h1>
-                <p>Remplissez ce formulaire d'inscription en ligne pour réserver votre place.</p>
-                <form id="inscription-form">
-                    <input type="hidden" name="form_type" value="Inscription">
+                <h1>Envoyer mon certificat médical</h1>
+                <p class="intro">Dépose ici ton certificat médical de non contre-indication à la pratique du
+                    Jiu-Jitsu Brésilien. Formats acceptés : photo ou PDF.</p>
+
+                <form id="certif-form">
+                    <input type="hidden" name="form_type" value="Certificat">
                     <p class="form-required-note"><span class="req">*</span> Champs obligatoires</p>
+
                     <div class="form-group">
                         <label for="nom">Nom <span class="req">*</span></label>
                         <input type="text" id="nom" name="Nom" placeholder="Votre nom" required>
@@ -169,88 +205,81 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="email">Adresse mail <span class="req">*</span></label>
-                        <input type="email" id="email" name="Adresse mail" placeholder="Votre adresse mail" required>
+                        <label for="fichier">Certificat médical <span class="req">*</span></label>
+                        <input type="file" id="fichier" accept="image/*,application/pdf" required>
+                        <span class="hint">Photo (JPG, PNG) ou PDF — 10 Mo maximum.</span>
                     </div>
 
-                    <div class="form-group">
-                        <label for="age">Âge <span class="req">*</span></label>
-                        <select id="age" name="Âge" required>
-                            <option value="" disabled selected>Sélectionner l'âge</option>
-                        </select>
+                    <div class="privacy-note">
+                        <i class="fas fa-lock"></i> Ton certificat est envoyé dans un espace <strong>privé</strong>
+                        accessible uniquement par le bureau de l'association, et conservé le temps de la saison
+                        sportive. Il ne sera utilisé que pour valider ton inscription.
                     </div>
 
-                    <div class="form-group">
-                        <label for="sexe">Sexe <span class="req">*</span></label>
-                        <select id="sexe" name="Sexe" required>
-                            <option value="" disabled selected>Sélectionner</option>
-                            <option value="Homme">Homme</option>
-                            <option value="Femme">Femme</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="tranche">Catégorie <span class="req">*</span></label>
-                        <select id="tranche" name="Tranche" required>
-                            <option value="" disabled selected>Sélectionner une catégorie</option>
-                            <option value="Kids (5/9 ans)">KIDS (5/9 ans)</option>
-                            <option value="Ados (10/15 ans)">ADOS (10/15 ans)</option>
-                            <option value="Adultes (16 ans +)">ADULTES (16 ans +)</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="submit-btn" id="submit-btn">Soumettre l'inscription</button>
+                    <button type="submit" class="submit-btn" id="submit-btn">Envoyer mon certificat</button>
                     <div id="form-msg" style="margin-top: 15px; font-weight: 600; text-align: center; display: none;">
                     </div>
                 </form>
 
                 <script>
                     const scriptURL = 'https://script.google.com/macros/s/AKfycbw8-Ddkha946zlPteWJrFTK-xGttkoODrwwEy5raM5zUesLVrupC9g83qtgh12itOW_VQ/exec';
-                    const form = document.getElementById('inscription-form');
+                    const form = document.getElementById('certif-form');
                     const btn = document.getElementById('submit-btn');
                     const msg = document.getElementById('form-msg');
+                    const fichier = document.getElementById('fichier');
 
-                    // Remplissage du menu déroulant Âge : de 5 à 70 ans, puis "Plus de 70 ans"
-                    const ageSelect = document.getElementById('age');
-                    for (let a = 5; a <= 70; a++) {
-                        ageSelect.insertAdjacentHTML('beforeend', `<option value="${a} ans">${a} ans</option>`);
+                    function showMsg(text, color) {
+                        msg.style.display = "block";
+                        msg.style.color = color;
+                        msg.innerHTML = text;
                     }
-                    ageSelect.insertAdjacentHTML('beforeend', '<option value="Plus de 70 ans">Plus de 70 ans</option>');
-
-                    let hideMsgTimer = null;
-
-                    // Dès que l'utilisateur recommence à remplir, on masque l'ancien message de confirmation
-                    form.addEventListener('input', () => {
-                        if (msg.style.display === "block") {
-                            msg.style.display = "none";
-                        }
-                    });
 
                     form.addEventListener('submit', e => {
                         e.preventDefault();
+                        const file = fichier.files[0];
+                        if (!file) return;
+
+                        // Garde-fou taille : 10 Mo max
+                        if (file.size > 10 * 1024 * 1024) {
+                            showMsg("Fichier trop lourd (10 Mo maximum). Compresse-le ou prends une photo plus légère.", "#c0392b");
+                            return;
+                        }
+
                         btn.disabled = true;
                         btn.innerHTML = "Envoi en cours...";
                         msg.style.display = "none";
-                        if (hideMsgTimer) clearTimeout(hideMsgTimer);
 
-                        // Using no-cors mode is essential for Google Apps Script Web Apps
-                        fetch(scriptURL, {
-                            method: 'POST',
-                            body: new FormData(form),
-                            mode: 'no-cors'
-                        }).catch(error => console.error('Erreur réseau:', error));
+                        const reader = new FileReader();
+                        reader.onload = function () {
+                            const base64 = reader.result.split(',')[1];
+                            const fd = new FormData();
+                            fd.append('form_type', 'Certificat');
+                            fd.append('Nom', document.getElementById('nom').value);
+                            fd.append('Prénom', document.getElementById('prenom').value);
+                            fd.append('filename', file.name);
+                            fd.append('mimeType', file.type || 'application/octet-stream');
+                            fd.append('fileData', base64);
 
-                        setTimeout(() => {
-                            msg.style.display = "block";
-                            msg.style.color = "#4CAF50";
-                            msg.innerHTML = "Merci ! Votre pré-inscription a bien été reçue.";
-                            form.reset();
-                            btn.innerHTML = "Soumettre l'inscription";
+                            fetch(scriptURL, {
+                                method: 'POST',
+                                body: fd,
+                                mode: 'no-cors'
+                            }).catch(error => console.error('Erreur réseau:', error));
+
+                            setTimeout(() => {
+                                showMsg("Merci ! Ton certificat a bien été envoyé.", "#4CAF50");
+                                form.reset();
+                                btn.innerHTML = "Envoyer mon certificat";
+                                btn.disabled = false;
+                            }, 1800);
+                        };
+                        reader.onerror = function () {
+                            showMsg("Une erreur est survenue lors de la lecture du fichier. Réessaie.", "#c0392b");
+                            btn.innerHTML = "Envoyer mon certificat";
                             btn.disabled = false;
-                            // Le message disparaît tout seul au bout de 6 secondes
-                            hideMsgTimer = setTimeout(() => { msg.style.display = "none"; }, 6000);
-                        }, 1200);
-                    })
+                        };
+                        reader.readAsDataURL(file);
+                    });
                 </script>
             </div>
         </div>
