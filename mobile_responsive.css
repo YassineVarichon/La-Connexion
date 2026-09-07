@@ -225,3 +225,51 @@
         margin: 0 10px;
     }
 }
+
+/* --- Navbar : séparateur + menu déroulant sur mobile --- */
+@media screen and (max-width: 960px) {
+    .nav-sep {
+        width: 50%;
+        height: 1px;
+        margin: 5px auto;
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .has-dropdown {
+        width: 100%;
+        text-align: center;
+    }
+
+    .has-dropdown>.dropdown-toggle {
+        justify-content: center;
+    }
+
+    .has-dropdown>.dropdown-toggle::after {
+        display: none;
+    }
+
+    .dropdown-menu {
+        position: static !important;
+        transform: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 12px 0 0;
+        margin-top: 6px;
+        min-width: 0;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .dropdown-menu li a {
+        color: rgba(255, 255, 255, 0.75) !important;
+        font-size: 1rem;
+        white-space: nowrap;
+    }
+
+    .dropdown-menu li a.active {
+        color: white !important;
+    }
+}
