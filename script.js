@@ -388,7 +388,7 @@ document.addEventListener('DOMContentLoaded', () => {
         • Samedi : 16h00 - 18h00 (100% Femmes)<br><br>
         <i>Gymnase Evariste Galois, Nanterre.</i>`,
 
-        'inscription': `<b>S'inscrire :</b><br>Commencez par remplir le formulaire en ligne sur notre onglet <a href="inscription" style="color:var(--primary); font-weight:bold; text-decoration:underline;">Pré-inscription</a>.<br><br>
+        'inscription': `<b>S'inscrire :</b><br>Commencez par remplir le formulaire en ligne sur notre onglet <a href="inscription" style="color:var(--primary); font-weight:bold; text-decoration:underline;">Inscription</a>.<br><br>
         Ensuite, rejoignez-nous sur place avec :<br>
         1. Certificat médical<br>
         2. Deux photos d'identité<br>
