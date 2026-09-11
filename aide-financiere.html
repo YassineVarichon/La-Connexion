@@ -139,6 +139,31 @@
             color: var(--text);
         }
 
+        .aide-important {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            background: rgba(168, 28, 38, 0.1);
+            border: 1.5px solid var(--primary);
+            border-radius: 12px;
+            padding: 16px 18px;
+            margin: -5px 0 25px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.98rem;
+            line-height: 1.55;
+            color: var(--text);
+        }
+
+        .aide-important i {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-top: 1px;
+        }
+
+        .aide-important strong {
+            color: var(--primary);
+        }
+
         html {
             scroll-behavior: smooth;
         }
@@ -377,10 +402,18 @@
 
                     <div class="form-group">
                         <label for="numero">Numéro / Code de l'aide <span class="req">*</span></label>
-                        <input type="text" id="numero" name="Numéro" placeholder="Ex : le code reçu par mail/courrier"
-                            required>
+                        <input type="text" id="numero" name="Numéro"
+                            placeholder="Ex : le code reçu par mail/courrier (ou « Sans code »)" required>
                         <span class="hint">C'est le numéro que nous transmettons à l'organisme (CAF, Pass'Sport…)
                             pour le remboursement. Recopie-le exactement.</span>
+                    </div>
+
+                    <div class="aide-important">
+                        <i class="fas fa-triangle-exclamation"></i>
+                        <span>Tu n'as <strong>pas de numéro / code</strong> (par exemple certaines aides
+                            <strong>CAF</strong>) ? Écris « <strong>Sans code</strong> » ci-dessus, et surtout
+                            <strong>apporte impérativement le justificatif papier en main propre</strong> au club.
+                            Sans ce papier, l'aide ne pourra pas être prise en compte.</span>
                     </div>
 
                     <div class="form-group">
