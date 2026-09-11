@@ -134,6 +134,21 @@
             color: var(--text);
         }
 
+        .reglement-row {
+            margin: 5px 0 12px;
+        }
+
+        .reglement-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 600;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            text-decoration: underline;
+        }
+
         .legal-note {
             max-width: 600px;
             margin: 30px auto 0;
@@ -186,7 +201,7 @@
                     <a href="inscription.html" class="dropdown-toggle active">Inscription</a>
                     <ul class="dropdown-menu">
                         <li><a href="inscription.html" class="active">S'inscrire</a></li>
-                        <li><a href="paiement.html">Tarifs</a></li>
+                        <li><a href="paiement.html">Tarif et adhésion</a></li>
                         <li><a href="certificat.html">Certificat médical</a></li>
                         <li><a href="aide-financiere.html">Aides financières</a></li>
                     </ul>
@@ -250,21 +265,22 @@
                             <option value="Kids (5/9 ans)">KIDS (5/9 ans)</option>
                             <option value="Ados (10/15 ans)">ADOS (10/15 ans)</option>
                             <option value="Adultes (16 ans +)">ADULTES (16 ans +)</option>
+                            <option value="Adultes Femmes (16 ans +)">ADULTES FEMMES (16 ans +)</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="nom-parent">Nom du parent / tuteur</label>
+                        <label for="nom-parent">Nom du parent / tuteur <span class="req">*</span></label>
                         <input type="text" id="nom-parent" name="Nom parent"
-                            placeholder="Nom et prénom du parent">
-                        <span class="hint">Obligatoire si le pratiquant est mineur.</span>
+                            placeholder="Nom et prénom du parent" required>
+                        <span class="hint">Pour un adulte, indique une personne à prévenir en cas d'urgence.</span>
                     </div>
 
                     <div class="form-group">
-                        <label for="tel-parent">Téléphone du parent / tuteur</label>
+                        <label for="tel-parent">Téléphone du parent / tuteur <span class="req">*</span></label>
                         <input type="tel" id="tel-parent" name="Téléphone parent"
-                            placeholder="Ex : 06 12 34 56 78">
-                        <span class="hint">Obligatoire si le pratiquant est mineur.</span>
+                            placeholder="Ex : 06 12 34 56 78" required>
+                        <span class="hint">Pour un adulte, indique un numéro à joindre en cas d'urgence.</span>
                     </div>
 
                     <div class="form-group">
@@ -290,6 +306,20 @@
                             la prise en charge de mon enfant, notamment à contacter les services d'urgence.</span>
                     </div>
 
+                    <div class="reglement-row">
+                        <a href="reglement-interieur.pdf" target="_blank" rel="noopener" class="reglement-link">
+                            <i class="fas fa-file-lines"></i> Lire le règlement intérieur
+                        </a>
+                    </div>
+
+                    <div class="form-check">
+                        <label for="reglement">
+                            <input type="checkbox" id="reglement" name="Règlement lu" value="Oui" required>
+                            <span>J'ai bien lu et j'accepte le <strong>règlement intérieur</strong> de La Connexion.
+                                <span class="req">*</span></span>
+                        </label>
+                    </div>
+
                     <div class="form-check">
                         <label for="consent">
                             <input type="checkbox" id="consent" name="Consentement" value="Oui" required>
@@ -298,6 +328,14 @@
                                 informations d'<strong>assurance</strong> de l'association indiquées ci-dessous, et
                                 j'accepte les conditions d'inscription. <span class="req">*</span></span>
                         </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signature">Signature électronique <span class="req">*</span></label>
+                        <input type="text" id="signature" name="Signature" placeholder="Écris ton Nom et Prénom"
+                            required>
+                        <span class="hint">Recopie ton <strong>Nom et Prénom</strong>. Cela vaut signature : je
+                            certifie l'exactitude des informations fournies et j'accepte les conditions ci-dessus.</span>
                     </div>
 
                     <button type="submit" class="submit-btn" id="submit-btn">Soumettre l'inscription</button>
